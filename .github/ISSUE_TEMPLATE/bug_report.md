@@ -23,7 +23,8 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-**Gryphon Version**: [e.g. v0.1.0]
+**Gryphon Version:** [e.g. v0.1.0]
+
 **CMake Build Generator (if bug related to compilation):** [e.g. MinGW Makefiles]
 
 **Runtime Environment (if applicable):**
