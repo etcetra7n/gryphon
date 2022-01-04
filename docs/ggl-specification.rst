@@ -1,0 +1,5 @@
+*****************
+GGL Specification
+*****************
+
+- Like html

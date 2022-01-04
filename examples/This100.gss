@@ -1,0 +1,12 @@
+body{
+    bgcolor: #ffffff;
+    font: "sans-serif";
+    border-width: 1px;
+    margin: 10px;
+    color: #000000;
+}
+plot{
+    type: scatter;
+    radius: 2px;
+    color: #555555;
+}

@@ -1,0 +1,21 @@
+<!Comment>
+<ggl>
+    <head>
+        <out resolution={1600px, 900px}/>
+        <data dimension=2>
+        <data type={0x00, 0x00}>
+    </head>
+
+    <body>
+        <plot>
+            <axis dim=1>
+                <label>${Label[1]}</label>
+                <data>${Data[1]}</data>
+            </axis>
+            <axis dim=2>
+                <label>${Label[2]}</label>
+                <data>${Data[2]}</data>
+            </axis>
+        </plot>
+    </body>
+</ggl>
