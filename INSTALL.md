@@ -3,4 +3,6 @@ $ cmake . -G "Unix Makefiles"
 $ make
 ```
 
-You could also use other cmake generators as well. "Ninja" is a reputed alternative
+You could use other cmake generators as well, in case
+"Unix Makefiles" doesn't serve you well. "Ninja" is a reputed
+alternative
