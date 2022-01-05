@@ -1,5 +1,5 @@
-#ifndef GRYPHON_PARSER_H
-#define GRYPHON_PARSER_H
+#ifndef GRYPHON_TEMPLATE_PARSER_H
+#define GRYPHON_TEMPLATE_PARSER_H
 
 #include <string>
 

@@ -1,5 +1,5 @@
-#ifndef GRYPHON_TREE_H
-#define GRYPHON_TREE_H
+#ifndef GRYPHON_TEMPLATE_TREE_H
+#define GRYPHON_TEMPLATE_TREE_H
 
 #include <vector>
 #include "element.h"

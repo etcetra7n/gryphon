@@ -1,5 +1,5 @@
-#ifndef GRYPHON_ELEMENT_H
-#define GRYPHON_ELEMENT_H
+#ifndef GRYPHON_TEMPLATE_ELEMENT_H
+#define GRYPHON_TEMPLATE_ELEMENT_H
 
 #include <vector>
 #include <string>
