@@ -1,12 +1,12 @@
-#ifndef GRYPHON_TEMPLATE_TREE_H
-#define GRYPHON_TEMPLATE_TREE_H
+#ifndef GRYPHON_TEMPLATE_TEMPLATE_H
+#define GRYPHON_TEMPLATE_TEMPLATE_H
 
 #include <vector>
-#include "element.h"
+#include "Template/element.h"
 
 namespace Template
 {
-    class GGLTree
+    class Template
     {
       private:
         std::vector<Element*> _elements;

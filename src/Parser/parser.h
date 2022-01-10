@@ -3,7 +3,7 @@
 
 #include <string>
 
-namespace Template
+namespace Parser
 {
     class Parser
     {

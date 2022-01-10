@@ -5,9 +5,9 @@
 #include <ios>
 #include <algorithm>
 #include <iostream>
-#include "gtml.h"
-#include "element.h"
-#include "tree.h"
+#include "Template/gtml.h"
+#include "Template/element.h"
+#include "Template/template.h"
 #include "gryphon.h"
 
 //Writing a binary file, consistent across systems, requires standardized 
@@ -27,7 +27,7 @@ inline uint64_t hton_64(const uint64_t x)
 
 namespace Template
 {
-    int compose_gtml(GGLTree *tree, const std::string filepath)
+    int compose_gtml(Template *tml, const std::string filepath)
     {
         std::ofstream file(filepath, std::ios::out | std::ios::binary);
         if(!file.good())
@@ -35,7 +35,7 @@ namespace Template
             return 1;
         }
         
-        std::vector<Element*> elements = *(tree->elements());
+        std::vector<Element*> elements = *(tml->elements());
         uint32_t major_version = hton_32(GRYPHON_GTML_MAJOR_VERSION);
         uint32_t minor_version = hton_32(GRYPHON_GTML_MINOR_VERSION);
         uint32_t patch_version = hton_32(GRYPHON_GTML_PATCH_VERSION);

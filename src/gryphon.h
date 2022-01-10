@@ -6,7 +6,8 @@
 #define GRYPHON_PATCH_VERSION 0
 
 #include <string>
-#include "Template/tree.h"
+#include "Template/template.h"
+#include "Data/data.h"
 
 #define H 512
 #define V 512
@@ -26,8 +27,17 @@ namespace Export
 }
 namespace Template
 {
-    Template::GGLTree *parse_ggl(const std::string filepath);
-    int compose_gtml(Template::GGLTree *tree, const std::string filepath);
+    Template *parse_ggl(const std::string);
+    int compose_gtml(Template*, const std::string);
+}
+namespace Plot
+{
+    int compose_gplt(Template::Template*, Data::Data*);
+    Template::Template *parse_gtml(const std::string);
+}
+namespace Data
+{
+    Data *parse_gdt(const std::string);
 }
 
 #endif

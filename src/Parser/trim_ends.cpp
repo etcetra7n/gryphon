@@ -1,7 +1,7 @@
 #include <string>
 #include "trim_ends.h"
 
-namespace Template
+namespace Parser
 {
     std::string trim_ends(const std::string str)
     {

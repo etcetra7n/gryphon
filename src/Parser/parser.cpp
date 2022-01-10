@@ -1,7 +1,7 @@
 #include <string>
 #include "parser.h"
 
-namespace Template
+namespace Parser
 {
     Parser::Parser(const std::string rstr)
     {

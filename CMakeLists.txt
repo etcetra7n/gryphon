@@ -12,19 +12,21 @@ set(SOURCES
     src/Main/main.cpp
     src/Graph/raster.cpp
     src/Export/export_bmp.cpp
+    src/Parser/parser.cpp
+    src/Parser/trim_ends.cpp
+    src/Layout/parse_ggl.cpp
     src/Template/element.cpp
-    src/Template/tree.cpp
-    src/Template/parser.cpp
-    src/Template/parse_ggl.cpp
-    src/Template/trim_ends.cpp
+    src/Template/template.cpp
     src/Template/compose_gtml.cpp
+    src/Template/parse_gtml.cpp
 )
 set(HEADERS
     src/gryphon.h
+    src/Parser/parser.h
+    src/Parser/trim_ends.h
     src/Template/gtml.h
     src/Template/element.h
-    src/Template/tree.h
-    src/Template/parser.h
+    src/Template/template.h
 )
 
-add_executable(gryphon ${SOURCES} ${HEADERS})
+add_executable(grn ${SOURCES} ${HEADERS})

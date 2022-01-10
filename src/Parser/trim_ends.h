@@ -2,7 +2,7 @@
 #define GRYPHON_TEMPLATE_TRIM_ENDS_H
 
 #include <string>
-namespace Template
+namespace Parser
 {
     std::string trim_ends(const std::string);
 }

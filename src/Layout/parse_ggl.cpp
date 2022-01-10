@@ -3,15 +3,15 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "element.h"
-#include "tree.h"
-#include "parser.h"
-#include "trim_ends.h"
+#include "Template/element.h"
+#include "Template/template.h"
+#include "Parser/parser.h"
+#include "Parser/trim_ends.h"
 #include "gryphon.h"
 
-namespace Template
+namespace Layout
 {
-    GGLTree *parse_ggl(const std::string filepath)
+    Template::Template *parse_ggl(const std::string filepath)
     {
         std::ifstream file(filepath, std::ios::in);
         std::stringstream buffer;
@@ -62,10 +62,10 @@ namespace Template
            - `tree` is an instance of GGLTree class, used to store the tree
         */
         
-        Parser parser(buffer.str());
+        Parser::Parser parser(buffer.str());
         delete &buffer;
-        std::vector<Element*> open_tags;
-        GGLTree *tree = new GGLTree();
+        std::vector<Template::Element*> open_tags;
+        Template::Template *tml = new Template::Template();
         
         if (parser.active())
         {
@@ -76,7 +76,7 @@ namespace Template
             
         while(parser.active())
         {
-            Parser tag(parser.parse_till(">"));
+            Parser::Parser tag(parser.parse_till(">"));
             if (!(tag.begins_with("!")))
             {
                 if (tag.begins_with("/"))
@@ -100,7 +100,7 @@ namespace Template
                     //non closing tags are either opening tags or attribute
                     //tags. for both of the tags, the name and attributes
                     //are parsed
-                    Element *e = tree->new_element();
+                    Template::Element *e = tml->new_element();
                     e->set_name(tag.parse_alpha());
                     while(isalpha(tag.next_non_space_char()))
                     {
@@ -128,7 +128,7 @@ namespace Template
                         //appended to the open_tags vector and the value 
                         //of the element get parsed
                         open_tags.push_back(e);
-                        e->set_value(trim_ends(parser.parse_till("<")));
+                        e->set_value(Parser::trim_ends(parser.parse_till("<")));
                     }
                 }
             } else{
@@ -137,6 +137,6 @@ namespace Template
                 parser.ignore_till("<");
             }
         }
-        return tree;
+        return tml;
     }
 }
