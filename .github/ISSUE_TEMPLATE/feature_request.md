@@ -14,7 +14,4 @@ A clear and concise description of what the problem is. (Ex. I'm always frustrat
 A clear and concise description of what you want to happen. (Ex. It would have been much more convenient if there was a [...])
 
 **Describe alternatives you've considered**  
-A clear and concise description of any alternative solutions or features you might have considered.
-
-**Additional context**  
-Any other context or screenshots about the feature request goes here.
+A clear and concise description of any alternative solutions you might have considered.
