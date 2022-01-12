@@ -23,7 +23,9 @@ A clear and concise description of what you expected to happen.
 **Screenshots**  
 If applicable, add screenshots to help explain your problem.
 
-**Gryphon Version:** [e.g. v0.1.0]
+**Gryphon version:** [e.g. v0.1.0]
+
+**Runtime environment** [e.g. Windows 10 64 bit]
 
 **Additional context**  
-Any other information deemed important that is not specified goes here
+Any other important information goes here
