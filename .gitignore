@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/c++,cmake,windows,visualstudio,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=c++,cmake,windows,visualstudio,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/c++,cmake,ninja,windows,visualstudio,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=c++,cmake,ninja,windows,visualstudio,visualstudiocode
 
 ### C++ ###
 # Prerequisites
@@ -53,8 +53,12 @@ _deps
 # External projects
 *-prefix/
 
+### Ninja ###
+.ninja_deps
+.ninja_log
+
 ### VisualStudioCode ###
-.vscode/
+.vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -488,10 +492,13 @@ FodyWeavers.xsd
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
-# End of https://www.toptal.com/developers/gitignore/api/c++,cmake,windows,visualstudio,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/c++,cmake,ninja,windows,visualstudio,visualstudiocode
 
 ### Sphinx build directory ###
 docs/_build/
+
+### Ninja ###
+build.ninja
 
 ### Others ###
 Workspace/
