@@ -25,6 +25,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Install packages
+        run: sudo apt-get install cmake gcc
+
       - name: Build
         run: |
           cmake -S. -B build -DCMAKE_BUILD_TYPE=Release -G Ninja
