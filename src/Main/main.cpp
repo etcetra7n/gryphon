@@ -3,7 +3,7 @@
  *****************************************************************************
  * Copyright(C) 2021 John Anchery
  * 
- * Authors: John Anchery <john.anchery@gmx.com>
+ * Authors: John Anchery <etcetra7n@gmail.com>
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,8 +20,8 @@
  *****************************************************************************/
 
 #include <iostream>
-#include <Template/element.h>
 #include <vector>
+#include "Template/element.h"
 #include "gryphon.h"
 
 int main(int argc, char **argv)
