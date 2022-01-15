@@ -35,13 +35,13 @@ jobs:
       - name: Binary size
         run: |
           echo "Size after build:"
-          du -b out/src/windowjs
-          strip out/src/windowjs
+          du -b build/gryphon
+          strip build/gryphon
           echo "Size after strip:"
-          du -b out/src/windowjs
-          upx -9 out/src/windowjs
+          du -b build/gryphon
+          upx -9 build/gryphon
           echo "Size after upx:"
-          du -b out/src/windowjs
+          du -b build/gryphon
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
