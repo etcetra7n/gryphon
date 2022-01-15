@@ -4,11 +4,13 @@ on:
   push:
     branches: [ main ]
     paths-ignore:
+      - '.github/**'
       - 'docs/**'
       - 'examples/**'
   pull_request:
     branches: [ main ]
     paths-ignore:
+      - '.github/**'
       - 'docs/**'
       - 'examples/**'
   release:
@@ -42,5 +44,5 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: grn.exe
-          path: build/grn.exe
+          name: gryphon.exe
+          path: build/gryphon.exe
