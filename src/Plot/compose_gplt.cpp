@@ -4,7 +4,7 @@
 
 namespace Plot
 {
-    int compose_gplt(Template*, Data*)
+    int compose_gplt(Gtemplate*, Gdata*)
     {
         return 0;
     }

@@ -6,13 +6,13 @@
 
 namespace Template
 {
-    class Template
+    class Gtemplate
     {
       private:
-        std::vector<Element*> _elements;
+        std::vector<Element> _elements;
       public:
         Element *new_element();
-        std::vector<Element*> *elements();
+        std::vector<Element> elements();
     };
 }
 

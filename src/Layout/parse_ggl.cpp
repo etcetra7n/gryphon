@@ -4,14 +4,14 @@
 #include <fstream>
 #include <sstream>
 #include "Template/element.h"
-#include "Template/template.h"
+#include "Template/gtemplate.h"
 #include "Parser/parser.h"
 #include "Parser/trim_ends.h"
 #include "gryphon.h"
 
 namespace Layout
 {
-    Template::Template *parse_ggl(const std::string filepath)
+    Template::Gtemplate *parse_ggl(const std::string filepath)
     {
         std::ifstream file(filepath, std::ios::in);
         std::stringstream buffer;
@@ -20,7 +20,7 @@ namespace Layout
             buffer << file.rdbuf();
         } else
         {
-            return NULL;
+            return nullptr;
         }
         file.close();
         
@@ -59,13 +59,13 @@ namespace Layout
            -`open_tags` is an  std::vector<Element*> which holds the pointer 
              to the elements whose corresponding closing tag is not parsed yet
              
-           - `tree` is an instance of GGLTree class, used to store the tree
+           - `tml` is an instance of Template class, used to store the template
         */
         
         Parser::Parser parser(buffer.str());
         delete &buffer;
         std::vector<Template::Element*> open_tags;
-        Template::Template *tml = new Template::Template();
+        Template::Gtemplate *tml = new Template::Gtemplate();
         
         if (parser.active())
         {
