@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "Template/element.h"
 #include "Template/gtemplate.h"
 
@@ -11,6 +12,9 @@ namespace Template
 
     std::vector<Element> Gtemplate::elements()
     {
-        return std::copy(_elements.begin(), _elements.end();
+        std::vector<Element> elements_copy;
+        elements_copy.reserve(_elements.size());
+        std::copy(_elements.begin(), _elements.end(), elements_copy.begin());
+        return elements_copy;
     }
 }
