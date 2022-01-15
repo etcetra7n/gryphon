@@ -1,4 +1,4 @@
-name: Build
+name: Linux Build
 
 on:
   push:
@@ -19,10 +19,7 @@ on:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        os: [linux-latest, macos-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: linux-latest
 
     steps:
       - name: Checkout
@@ -30,7 +27,7 @@ jobs:
 
       - name: Build
         run: |
-          cmake -B build -DCMAKE_BUILD_TYPE=Release -G Ninja
+          cmake -S. -B build -DCMAKE_BUILD_TYPE=Release -G Ninja
           cmake --build build
       - name: Binary size
         run: |
