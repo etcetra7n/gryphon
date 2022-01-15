@@ -22,13 +22,14 @@
 #include <iostream>
 #include <vector>
 #include "Template/element.h"
+#include "Template/gtemplate.h"
 #include "gryphon.h"
 
 int main(int argc, char **argv)
 {
     Template::Gtemplate *tml = Layout::parse_ggl("Workspace/This100.ggl");
     std::vector<Template::Element> v = tml->elements();
-    return 0;
+    return 1;
     compose_gtml(tml, "Workspace/This100.gtml");
     Template::parse_gtml("Workspace/This100.gtml");
     return 0;
