@@ -1,0 +1,46 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - 'docs/**'
+      - 'examples/**'
+  pull_request:
+    branches: [ main ]
+    paths-ignore:
+      - 'docs/**'
+      - 'examples/**'
+  release:
+    types: [released]
+
+  # Allows running this workflow manually from the Actions tab.
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          cmake -B build -DCMAKE_BUILD_TYPE=Release -G Ninja
+          cmake --build build
+      - name: Binary size
+        run: |
+          echo "Size after build:"
+          du -b out/src/windowjs
+          strip out/src/windowjs
+          echo "Size after strip:"
+          du -b out/src/windowjs
+          upx -9 out/src/windowjs
+          echo "Size after upx:"
+          du -b out/src/windowjs
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: gryphon
+          path: build/gryphon
