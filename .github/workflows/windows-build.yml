@@ -41,10 +41,12 @@ jobs:
         run: |
           cmake -S. -B build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G ${{ github.event.inputs.build_generator }}
           cmake --build build
+
       - name: Build (on automatically triggered workflow)
         run: |
           cmake -S. -B build -DCMAKE_BUILD_TYPE=Release -G Ninja
           cmake --build build
+
       - name: Binary size
         run: |
           Write-Host "Size after build:"
@@ -52,6 +54,7 @@ jobs:
           upx -9 build/gryphon.exe
           Write-Host "Size after upx:"
           Write-Host((Get-Item build/gryphon.exe).length)
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
