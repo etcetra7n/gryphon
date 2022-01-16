@@ -12,7 +12,7 @@ namespace Data
         uint32_t _type;
         std::vector<uint32_t> _uint32;
       public:
-        GData();
+        Gdata();
         uint32_t type();
         std::vector<uint32_t> data();
     };
