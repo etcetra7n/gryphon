@@ -22,11 +22,11 @@ on:
     inputs:
       build_type:
         description: Build type (Release, Debug, RelWithDebInfo, MinSizeRel)
-        required: false
+        required: true
         default: Release
       build_generator:
         description: Build generator
-        required: false
+        required: true
         default: Ninja
 
 jobs:
