@@ -489,9 +489,10 @@ FodyWeavers.xsd
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
-### Sphinx build directory ###
+### Build directories ###
+_build/
 docs/_build/
 
 ### Others ###
-Workspace/
+**/workspace/
 **/.trash/
