@@ -40,13 +40,13 @@ jobs:
         run: choco install ninja upx
 
       - name: Build (on manually triggered workflow)
-        if: ${{  github.event_name }} == 'workflow_dispatch'
+        if: github.event_name == 'workflow_dispatch'
         run: |
           cmake -S. -B build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G ${{ github.event.inputs.build_generator }}
           cmake --build build
 
       - name: Build (on automatically triggered workflow)
-        if: ${{  github.event_name }} != 'workflow_dispatch'
+        if: github.event_name != 'workflow_dispatch'
         run: |
           cmake -S. -B build -DCMAKE_BUILD_TYPE=Release -G Ninja
           cmake --build build
