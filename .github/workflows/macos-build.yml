@@ -36,7 +36,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install packages
-        run: brew install Ninja
+        run: brew install ninja
 
       - name: Build
         run: |
