@@ -23,7 +23,7 @@ on:
         required: false
         default: Release
       build_generator:
-        description: CMake build generator
+        description: Build generator
         required: false
         default: Ninja
 
