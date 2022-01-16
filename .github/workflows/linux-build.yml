@@ -48,7 +48,6 @@ jobs:
       - name: Build (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
         run: |
-          echo ${{ github.event.inputs.build_type }}
           cmake -S. -B build -DCMAKE_BUILD_TYPE=Release -G Ninja
           cmake --build build
 
