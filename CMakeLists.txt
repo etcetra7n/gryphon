@@ -32,4 +32,4 @@ set(HEADERS
     src/Data/gdata.h
 )
 
-add_executable(grn ${SOURCES} ${HEADERS})
+add_executable(gryphon ${SOURCES} ${HEADERS})
