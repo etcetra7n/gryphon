@@ -24,10 +24,6 @@ on:
         description: Build type (Release, Debug, RelWithDebInfo, MinSizeRel)
         required: true
         default: Release
-      build_generator:
-        description: Build generator
-        required: true
-        default: Ninja
 
 jobs:
   build:
@@ -42,7 +38,7 @@ jobs:
       - name: Build (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
         run: |
-          cmake -S. -B build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G ${{ github.event.inputs.build_generator }}
+          cmake -S. -B build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G Ninja
           cmake --build build
 
       - name: Build (on automatically triggered workflow)
