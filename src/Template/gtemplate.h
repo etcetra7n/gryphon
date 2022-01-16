@@ -1,5 +1,5 @@
-#ifndef GRYPHON_TEMPLATE_TEMPLATE_H
-#define GRYPHON_TEMPLATE_TEMPLATE_H
+#ifndef GRYPHON_TEMPLATE_GTEMPLATE_H
+#define GRYPHON_TEMPLATE_GTEMPLATE_H
 
 #include <vector>
 #include "Template/element.h"

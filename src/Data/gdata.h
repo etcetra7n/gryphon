@@ -1,5 +1,5 @@
-#ifndef GRYPHON_DATA_H
-#define GRYPHON_DATA_H
+#ifndef GRYPHON_GDATA_H
+#define GRYPHON_GDATA_H
 
 #include <stdint.h>
 #include <vector>
