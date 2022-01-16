@@ -19,7 +19,7 @@ on:
   workflow_dispatch:
     inputs:
       build_type:
-        description: Choose build type (Release, Debug, RelWithDebInfo, MinSizeRel)
+        description: Build type (Release, Debug, RelWithDebInfo, MinSizeRel)
         required: false
         default: Release
       build_generator:
