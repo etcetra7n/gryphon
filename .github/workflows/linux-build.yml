@@ -15,7 +15,6 @@ on:
       - 'examples/**'
   release:
     types: [released]
-
   workflow_dispatch:
     inputs:
       build_type:
@@ -30,7 +29,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -38,10 +36,18 @@ jobs:
       - name: Install packages
         run: sudo apt-get install ninja-build
 
-      - name: Build
+      - name: Build (on manually triggered workflow)
+        if: ${{  github.event_name }} == 'workflow_dispatch'
         run: |
           cmake -S. -B build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G ${{ github.event.inputs.build_generator }}
           cmake --build build
+
+      - name: Build (on automatically triggered workflow)
+        if: ${{  github.event_name }} != 'workflow_dispatch'
+        run: |
+          cmake -S. -B build -DCMAKE_BUILD_TYPE=Release -G Ninja
+          cmake --build build
+
       - name: Binary size
         run: |
           echo "Size after build:"
@@ -52,6 +58,7 @@ jobs:
           upx -9 build/gryphon
           echo "Size after upx:"
           du -b build/gryphon
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
