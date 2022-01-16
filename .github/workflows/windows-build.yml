@@ -37,7 +37,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install packages
-        run: choco install ninja mingw upx
+        run: |
+          choco install ninja upx
+          choco upgrade mingw
 
       - name: Build (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
