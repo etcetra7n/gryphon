@@ -41,8 +41,8 @@ jobs:
 
       - name: Build (on manually triggered workflow)
         if: ${{  github.event_name }} == 'workflow_dispatch'
-        run: echo ${{ github.event_name }}
         run: |
+          echo ${{ github.event_name }}
           cmake -S. -B build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G ${{ github.event.inputs.build_generator }}
           cmake --build build
 
