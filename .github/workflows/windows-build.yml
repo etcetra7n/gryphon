@@ -29,33 +29,35 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    - name: Checkout
-      uses: actions/checkout@v2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Install packages
-      run: choco install ninja upx
+      - name: Install packages
+        run: choco install ninja upx
 
-    - name: Build (on manually triggered workflow)
-      if: ${{  github.event_name }} == 'workflow_dispatch'
-      run: |
-        cmake -S. -B build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G ${{ github.event.inputs.build_generator }}
-        cmake --build build
+      - name: Build (on manually triggered workflow)
+        if: ${{  github.event_name }} == 'workflow_dispatch'
+        run: |
+          cmake -S. -B build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G ${{ github.event.inputs.build_generator }}
+          cmake --build build
 
-    - name: Build (on automatically triggered workflow)
-      run: |
-        cmake -S. -B build -DCMAKE_BUILD_TYPE=Release -G Ninja
-        cmake --build build
+      - name: Build (on automatically triggered workflow)
+        if: ${{  github.event_name }} != 'workflow_dispatch'
+        run: |
+          cmake -S. -B build -DCMAKE_BUILD_TYPE=Release -G Ninja
+          cmake --build build
 
-    - name: Binary size
-      run: |
-        Write-Host "Size after build:"
-        Write-Host((Get-Item build/gryphon.exe).length)
-        upx -9 build/gryphon.exe
-        Write-Host "Size after upx:"
-        Write-Host((Get-Item build/gryphon.exe).length)
+      - name: Binary size
+        run: |
+          Write-Host "Size after build:"
+          Write-Host((Get-Item build/gryphon.exe).length)
+          upx -9 build/gryphon.exe
+          Write-Host "Size after upx:"
+          Write-Host((Get-Item build/gryphon.exe).length)
 
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: gryphon.exe
-        path: build/gryphon.exe
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: gryphon.exe
+          path: build/gryphon.exe
