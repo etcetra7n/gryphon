@@ -7,14 +7,17 @@ on:
       - '.github/**'
       - 'docs/**'
       - 'examples/**'
+
   pull_request:
     branches: [ main ]
     paths-ignore:
       - '.github/**'
       - 'docs/**'
       - 'examples/**'
+
   release:
     types: [released]
+
   workflow_dispatch:
     inputs:
       build_type:
