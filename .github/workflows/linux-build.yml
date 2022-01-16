@@ -40,7 +40,6 @@ jobs:
 
       - name: Build
         run: |
-          ninja --version
           cmake -S. -B build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G ${{ github.event.inputs.build_generator }}
           cmake --build build
       - name: Binary size
