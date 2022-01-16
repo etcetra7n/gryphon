@@ -40,7 +40,6 @@ jobs:
 
       - name: Build
         run: |
-          cmake -v
           cmake --version
           Ninja -v
           gcc --version
