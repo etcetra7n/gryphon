@@ -16,8 +16,16 @@ on:
   release:
     types: [released]
 
-  # Allows running this workflow manually from the Actions tab.
   workflow_dispatch:
+    inputs:
+      build_type:
+        description: Build type (Release, Debug, RelWithDebInfo, MinSizeRel)
+        required: false
+        default: Release
+      build_generator:
+        description: CMake build generator (e.g. "Ninja", "Unix Makefiles" etc.)
+        required: false
+        default: Ninja
 
 jobs:
   build:
@@ -32,7 +40,7 @@ jobs:
 
       - name: Build
         run: |
-          cmake -S. -B build -DCMAKE_BUILD_TYPE=Release -G Ninja
+          cmake -S. -B build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G ${{ github.event.inputs.build_generator }}
           cmake --build build
       - name: Binary size
         run: |
