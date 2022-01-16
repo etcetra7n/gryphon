@@ -49,3 +49,4 @@ set(HEADERS
 )
 
 add_executable(gryphon ${SOURCES} ${HEADERS})
+install(TARGETS gryphon)
