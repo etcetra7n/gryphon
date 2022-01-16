@@ -40,12 +40,11 @@ jobs:
 
       - name: Build
         run: |
-          cmake --version
           Ninja --version
           gcc --version
-          cmake -S. -B build -DCMAKE_BUILD_TYPE=${{github.event.inputs.build_type }} -G ${{ github.event.inputs.build_generator }}
-          cmake --build build
-          strip build/gryphon
+          #cmake -S. -B build -DCMAKE_BUILD_TYPE=${{github.event.inputs.build_type }} -G ${{ github.event.inputs.build_generator }}
+          #cmake --build build
+          #strip build/gryphon
       - name: Binary size
         run: |
           echo "Binary size after build:"
