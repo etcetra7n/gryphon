@@ -36,10 +36,14 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install packages
-        run: brew install upx
+        run: brew install Ninja
 
       - name: Build
         run: |
+          cmake -v
+          cmake --version
+          Ninja -v
+          gcc --version
           cmake -S. -B build -DCMAKE_BUILD_TYPE=${{github.event.inputs.build_type }} -G ${{ github.event.inputs.build_generator }}
           cmake --build build
           strip build/gryphon
