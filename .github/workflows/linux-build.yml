@@ -40,7 +40,7 @@ jobs:
 
       - name: Build
         run: |
-          Ninja --version
+          #Ninja --version
           gcc --version
           cmake -S. -B build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G ${{ github.event.inputs.build_generator }}
           cmake --build build
