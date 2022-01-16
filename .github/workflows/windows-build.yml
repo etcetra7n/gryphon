@@ -38,25 +38,25 @@ jobs:
       - name: Build (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
         run: |
-          cmake -S. -B build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G Ninja
-          cmake --build build
+          cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G Ninja
+          cmake --build _build
 
       - name: Build (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
         run: |
-          cmake -S. -B build -DCMAKE_BUILD_TYPE=Release -G Ninja
-          cmake --build build
+          cmake -S. -B _build -DCMAKE_BUILD_TYPE=Release -G Ninja
+          cmake --build _build
 
       - name: Binary size
         run: |
           Write-Host "Size after build:"
-          Write-Host((Get-Item build/gryphon.exe).length)
-          upx -9 build/gryphon.exe
+          Write-Host((Get-Item _build/gryphon.exe).length)
+          upx -9 _build/gryphon.exe
           Write-Host "Size after upx:"
-          Write-Host((Get-Item build/gryphon.exe).length)
+          Write-Host((Get-Item _build/gryphon.exe).length)
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: gryphon.exe
-          path: build/gryphon.exe
+          path: _build/gryphon.exe
