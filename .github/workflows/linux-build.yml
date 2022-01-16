@@ -19,11 +19,11 @@ on:
   workflow_dispatch:
     inputs:
       build_type:
-        description: Build type (Release, Debug, RelWithDebInfo, MinSizeRel)
+        description: Choose build type: (Release, Debug, RelWithDebInfo, MinSizeRel)
         required: false
         default: Release
       build_generator:
-        description: CMake build generator (e.g. "Ninja", "Unix Makefiles" etc.)
+        description: CMake build generator
         required: false
         default: Ninja
 
