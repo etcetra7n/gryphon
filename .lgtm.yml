@@ -7,5 +7,4 @@ extraction:
 
     configure:
       command:
-        - cmake -DCMAKE_BUILD_TYPE=Release -G Ninja
-        - cmake --build .
+        - cmake -S. -B. -DCMAKE_BUILD_TYPE=Release -G Ninja
