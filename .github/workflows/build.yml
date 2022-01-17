@@ -127,9 +127,6 @@ jobs:
         run: |
           Write-Host "Size:"
           Write-Host((Get-Item _build/gryphon.exe).length)
-          strip _build/gryphon
-          Write-Host "Size after strip:"
-          Write-Host((Get-Item _build/gryphon.exe).length)
           upx -9 _build/gryphon.exe
           Write-Host "Size after upx:"
           Write-Host((Get-Item _build/gryphon.exe).length)
