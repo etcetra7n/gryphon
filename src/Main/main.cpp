@@ -28,7 +28,6 @@
 int main(int argc, char **argv)
 {
     Template::Gtemplate *tml = Layout::parse_ggl("workspace/test.ggl");
-    std::vector<Template::Element*> v = tml->elements();
     compose_gtml(tml, "workspace/test.gtml");
     Template::parse_gtml("workspace/test.gtml");
     return 0;
