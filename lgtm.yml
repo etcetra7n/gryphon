@@ -1,0 +1,11 @@
+extraction:
+  cpp:
+    prepare:
+      packages:
+        - cmake
+        - g++-10
+
+    configure:
+      command:
+        - cmake -S. -B _build -DCMAKE_BUILD_TYPE=Release -G Ninja
+        - cmake --build _build
