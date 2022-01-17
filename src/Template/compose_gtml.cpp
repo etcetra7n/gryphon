@@ -20,7 +20,7 @@ namespace Template
             return 1;
         }
         
-        std::vector<Element> elements = tml->elements();
+        std::vector<Element*> elements = tml->elements();
         uint32_t major_version = Parser::hton_32(GRYPHON_GTML_MAJOR_VERSION);
         uint32_t minor_version = Parser::hton_32(GRYPHON_GTML_MINOR_VERSION);
         uint32_t patch_version = Parser::hton_32(GRYPHON_GTML_PATCH_VERSION);
@@ -33,19 +33,27 @@ namespace Template
         
         for (std::vector<Element*>::size_type i = 0; i < elements.size(); i++)
         {
-            std::string name = elements[i].name();
-            std::string value = elements[i].value();
+            std::string name = elements[i]->name();
+            std::string value = elements[i]->value();
             file.write(name.c_str(), name.size()+1);
             file.write(value.c_str(), value.size()+1);
-            for(auto m : elements[i].attributes())
+            for(auto m : elements[i]->attributes())
             {
                 file.write(m.first.c_str(), m.first.size()+1);
                 file.write(m.second.c_str(), m.second.size()+1);
             }
             file.write("\0", 1);
-            if(elements[i].parent() != nullptr)
+            if(elements[i]->parent() != nullptr)
             {
-                uint64_t parent_index = Parser::hton_64((&elements[0] - elements[i].parent())+1);
+                std::vector<Element*>::size_type j = i;
+                for (;j>=0; j--)
+                {
+                    if (elements[j] == elements[i]->parent())
+                    {
+                        break;
+                    }
+                }
+                uint64_t parent_index = Parser::hton_64(j+1);
                 file.write(reinterpret_cast<char*>(&parent_index), sizeof(parent_index));
             }
             else
