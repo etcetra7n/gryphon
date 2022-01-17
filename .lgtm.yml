@@ -3,6 +3,7 @@ extraction:
     prepare:
       packages:
         - cmake
+        - ninja
         - g++-9
 
     configure:
