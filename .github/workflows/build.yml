@@ -49,7 +49,7 @@ jobs:
 
       - name: Compress
         run: |
-          echo "Size after build:"
+          echo "Size:"
           du -b _build/gryphon
           strip _build/gryphon
           echo "Size after strip:"
@@ -87,11 +87,13 @@ jobs:
 
       - name: Compress
         run: |
+          echo "Size:"
+          stat -f%z _build/gryphon
           strip _build/gryphon
-          echo "Binary size after build:"
+          echo "Size after strip:"
           stat -f%z _build/gryphon
           upx -9 _build/gryphon
-          echo "Binary size after upx:"
+          echo "Size after upx:"
           stat -f%z _build/gryphon
 
       - name: Upload artifacts
@@ -123,7 +125,10 @@ jobs:
 
       - name: Compress
         run: |
-          Write-Host "Size after build:"
+          Write-Host "Size:"
+          Write-Host((Get-Item _build/gryphon.exe).length)
+          strip _build/gryphon
+          Write-Host "Size after strip:"
           Write-Host((Get-Item _build/gryphon.exe).length)
           upx -9 _build/gryphon.exe
           Write-Host "Size after upx:"
