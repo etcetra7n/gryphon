@@ -3,7 +3,7 @@ extraction:
     prepare:
       packages:
         - cmake
-        - g++-10
+        - g++-9
 
     configure:
       command:
