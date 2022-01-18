@@ -73,7 +73,7 @@ jobs:
      - name: Configure variables (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
         env: 
-          build_type: ${{ github.event.inputs.build_type }}
+          build_type: ${{ build_type }}
 
       - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
@@ -86,16 +86,10 @@ jobs:
       - name: Install packages
         run: brew install ninja upx
 
-      - name: Build (on manually triggered workflow)
+      - name: Build
         if: github.event_name == 'workflow_dispatch'
         run: |
-          cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G Ninja
-          cmake --build _build
-
-      - name: Build (on automatically triggered workflow)
-        if: github.event_name != 'workflow_dispatch'
-        run: |
-          cmake -S. -B _build -DCMAKE_BUILD_TYPE=Release -G Ninja
+          cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ build_type }} -G Ninja
           cmake --build _build
 
       - name: Compress
@@ -134,16 +128,10 @@ jobs:
       - name: Install packages
         run: choco install ninja upx
 
-      - name: Build (on manually triggered workflow)
+      - name: Build
         if: github.event_name == 'workflow_dispatch'
         run: |
-          cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G Ninja
-          cmake --build _build
-
-      - name: Build (on automatically triggered workflow)
-        if: github.event_name != 'workflow_dispatch'
-        run: |
-          cmake -S. -B _build -DCMAKE_BUILD_TYPE=Release -G Ninja
+          cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ build_type }} -G Ninja
           cmake --build _build
 
       - name: Compress
