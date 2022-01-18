@@ -31,17 +31,14 @@ jobs:
     steps:
       - name: Configure variables (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
-        env: 
-          build_type: ${{ github.event.inputs.build_type }}
         run: |
-          echo "CMAKE_BUILD_TYPE: ${{ env.build_type }}"
+          echo "build_type=$(${{ github.event.inputs.build_type }})" >> ${{ GITHUB_ENV }}
 
       - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
-        env:
-          build_type: Release
-        run: | 
-          echo "CMAKE_BUILD_TYPE: ${{ env.build_type }}"
+        run: |
+          echo "build_type=$(Release)" >> ${{ GITHUB_ENV }}
+
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -76,17 +73,13 @@ jobs:
     steps:
       - name: Configure variables (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
-        env: 
-          build_type: ${{ github.event.inputs.build_type }}
-        run: | 
-          echo "CMAKE_BUILD_TYPE: ${{ env.build_type }}"
+        run: |
+          echo "build_type=$(${{ github.event.inputs.build_type }})" >> ${{ GITHUB_ENV }}
 
       - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
-        env:
-          build_type: Release
         run: | 
-          echo "CMAKE_BUILD_TYPE: ${{ env.build_type }}"
+          echo "build_type:$(Release)" >> ${{ GITGUB_ENV }}
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -122,17 +115,14 @@ jobs:
     steps:
       - name: Configure variables (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
-        env: 
-          build_type: ${{ github.event.inputs.build_type }}
-        run: | 
-          Write-Host "CMAKE_BUILD_TYPE: ${{ env.build_type }}"
+        run: |
+          Write-Host "build_type=$(${{ github.event.inputs.build_type }})" >> ${{ GITHUB_ENV }}
 
       - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
-        env:
-          build_type: Release
-        run: | 
-          Write-Host "CMAKE_BUILD_TYPE: ${{ env.build_type }}"
+        run: |
+          Write-Host "build_type=$(Release)" >> ${{ GITHUB_ENV }}
+
 
       - name: Checkout
         uses: actions/checkout@v2
