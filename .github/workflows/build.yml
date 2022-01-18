@@ -78,7 +78,7 @@ jobs:
       - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
         run: | 
-          echo "build_type:Release" >> $GITGUB_ENV
+          echo "build_type=Release" >> $GITGUB_ENV
 
       - name: Checkout
         uses: actions/checkout@v2
