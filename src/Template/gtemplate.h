@@ -2,6 +2,7 @@
 #define GRYPHON_TEMPLATE_GTEMPLATE_H
 
 #include <vector>
+#include "Template/element.h"
 
 namespace Template
 {
