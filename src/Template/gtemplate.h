@@ -6,7 +6,6 @@
 
 namespace Template
 {
-    class Element;
     class Gtemplate
     {
       private:
