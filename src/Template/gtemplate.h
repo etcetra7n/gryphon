@@ -8,7 +8,7 @@
 
 namespace Template
 {
-    class Gtemplate
+    class Gtemplate : public Element
     {
       private:
         std::vector<Element*> _elements;
