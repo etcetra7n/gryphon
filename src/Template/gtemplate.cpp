@@ -1,7 +1,4 @@
-#include <cstdlib>
 #include <vector>
-#include <string>
-#include <map>
 #include "Template/gtemplate.h"
 
 namespace Template
