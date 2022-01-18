@@ -117,12 +117,12 @@ jobs:
       - name: Configure variables (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
         run: |
-          Add-Content -Path $GITHUB_ENV -Value "build_type=${{ github.event.inputs.build_type }}" -Encoding UTF8
+          echo "build_type=${{ github.event.inputs.build_type }}" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
         run: |
-          Add-Content -Path $GITHUB_ENV -Value "build_type=Release" -Encoding UTF8
+          echo "build_type=Release" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Install packages
         run: choco install ninja upx
