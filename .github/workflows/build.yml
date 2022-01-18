@@ -24,6 +24,21 @@ on:
         description: Build type (Release, Debug, RelWithDebInfo, MinSizeRel)
         required: true
         default: Release
+      linux_build:
+        description: Linux build
+        type: boolean
+        required: true
+        default: true
+      macos_build:
+        description: MacOS build
+        type: boolean
+        required: true
+        default: true
+      windows_build:
+        description: Windows build
+        type: boolean
+        required: true
+        default: true
 
 jobs:
   Linux-Build:
@@ -33,11 +48,15 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         env: 
           build_type: ${{ github.event.inputs.build_type }}
+          linux_build: ${{ github.event.inputs.linux_build }}
 
       - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
         env:
           build_type: Release
+          linux_build: true
+
+      if: linux_build
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -70,6 +89,20 @@ jobs:
   MacOS-Build:
     runs-on: macos-latest
     steps:
+     - name: Configure variables (on manually triggered workflow)
+        if: github.event_name == 'workflow_dispatch'
+        env: 
+          build_type: ${{ github.event.inputs.build_type }}
+          macos_build: ${{ github.event.inputs.macos_build }}
+
+      - name: Configure variables (on automatically triggered workflow)
+        if: github.event_name != 'workflow_dispatch'
+        env:
+          build_type: Release
+          macos_build: true
+
+      if: macos_build
+
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -108,6 +141,20 @@ jobs:
   Windows-Build:
     runs-on: windows-latest
     steps:
+     - name: Configure variables (on manually triggered workflow)
+        if: github.event_name == 'workflow_dispatch'
+        env: 
+          build_type: ${{ github.event.inputs.build_type }}
+          windows_build: ${{ github.event.inputs.windows_build }}
+
+      - name: Configure variables (on automatically triggered workflow)
+        if: github.event_name != 'workflow_dispatch'
+        env:
+          build_type: Release
+          windows_build: true
+
+      if: windows_build
+
       - name: Checkout
         uses: actions/checkout@v2
 
