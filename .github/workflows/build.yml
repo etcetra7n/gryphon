@@ -64,7 +64,7 @@ jobs:
         with:
           name: gryphon-linux
           path: _build/gryphon
-          
+
   MacOS-Build:
     runs-on: macos-latest
     steps:
