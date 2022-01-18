@@ -70,7 +70,7 @@ jobs:
   MacOS-Build:
     runs-on: macos-latest
     steps:
-     - name: Configure variables (on manually triggered workflow)
+      - name: Configure variables (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
         env: 
           build_type: ${{ github.event.inputs.build_type }}
@@ -112,7 +112,7 @@ jobs:
   Windows-Build:
     runs-on: windows-latest
     steps:
-     - name: Configure variables (on manually triggered workflow)
+      - name: Configure variables (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
         env: 
           build_type: ${{ github.event.inputs.build_type }}
