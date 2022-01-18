@@ -1,7 +1,3 @@
-path_classifiers:
-  docs:
-    - "docs/*"
-
 extraction:
   cpp:
     configure:
