@@ -32,7 +32,7 @@ jobs:
       - name: Configure variables (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
         run: |
-          echo "build_type={{ github.event.inputs.build_type }}" >> $GITHUB_ENV
+          echo "build_type=${{ github.event.inputs.build_type }}" >> $GITHUB_ENV
 
       - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
@@ -73,7 +73,7 @@ jobs:
       - name: Configure variables (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
         run: |
-          echo "build_type={{ github.event.inputs.build_type }}" >> $GITHUB_ENV
+          echo "build_type=${{ github.event.inputs.build_type }}" >> $GITHUB_ENV
 
       - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
