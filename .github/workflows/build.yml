@@ -33,11 +33,17 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         env: 
           build_type: ${{ github.event.inputs.build_type }}
+        run: | 
+          echo "Building on: ${{ RUNNER_NAME }}
+          echo "CMAKE_BUILD_TYPE: ${{ build_type }}"
 
       - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
         env:
           build_type: Release
+        run: | 
+          echo "Building on: ${{ RUNNER_NAME }}
+          echo "CMAKE_BUILD_TYPE: ${{ build_type }}"
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -74,11 +80,17 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         env: 
           build_type: ${{ github.event.inputs.build_type }}
+        run: | 
+          echo "Building on: ${{ RUNNER_NAME }}
+          echo "CMAKE_BUILD_TYPE: ${{ build_type }}"
 
       - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
         env:
           build_type: Release
+        run: | 
+          echo "Building on: ${{ RUNNER_NAME }}
+          echo "CMAKE_BUILD_TYPE: ${{ build_type }}"
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -116,11 +128,17 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         env: 
           build_type: ${{ github.event.inputs.build_type }}
+        run: | 
+          Write-Host "Building on: ${{ RUNNER_NAME }}
+          Write-Host "CMAKE_BUILD_TYPE: ${{ build_type }}"
 
       - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
         env:
           build_type: Release
+        run: | 
+          Write-Host "Building on: ${{ RUNNER_NAME }}
+          Write-Host "CMAKE_BUILD_TYPE: ${{ build_type }}"
 
       - name: Checkout
         uses: actions/checkout@v2
