@@ -34,7 +34,7 @@ jobs:
         env: 
           build_type: ${{ github.event.inputs.build_type }}
         run: | 
-          echo "Building on: ${{ RUNNER_NAME }}
+          echo "Building on: ${{ env.RUNNER_NAME }}
           echo "CMAKE_BUILD_TYPE: ${{ build_type }}"
 
       - name: Configure variables (on automatically triggered workflow)
@@ -42,7 +42,7 @@ jobs:
         env:
           build_type: Release
         run: | 
-          echo "Building on: ${{ RUNNER_NAME }}
+          echo "Building on: ${{ env.RUNNER_NAME }}
           echo "CMAKE_BUILD_TYPE: ${{ build_type }}"
 
       - name: Checkout
