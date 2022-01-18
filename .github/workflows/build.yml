@@ -29,12 +29,12 @@ jobs:
   Linux-Build:
     runs-on: ubuntu-latest
     steps:
-      - Configure variables (on manually triggered workflow)
+      - name: Configure variables (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
         env: 
           build_type: ${{ github.event.inputs.build_type }}
 
-      - Configure variables (on automatically triggered workflow)
+      - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
         env:
           build_type: Release
