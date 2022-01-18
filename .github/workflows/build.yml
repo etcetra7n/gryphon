@@ -29,6 +29,9 @@ jobs:
   Linux-Build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Configure variables (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
         run: |
@@ -38,9 +41,6 @@ jobs:
         if: github.event_name != 'workflow_dispatch'
         run: |
           echo "build_type=Release" >> $GITHUB_ENV
-
-      - name: Checkout
-        uses: actions/checkout@v2
 
       - name: Install packages
         run: sudo apt-get install ninja-build
@@ -70,6 +70,9 @@ jobs:
   MacOS-Build:
     runs-on: macos-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Configure variables (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
         run: |
@@ -79,9 +82,6 @@ jobs:
         if: github.event_name != 'workflow_dispatch'
         run: | 
           echo "build_type=Release" >> $GITGUB_ENV
-
-      - name: Checkout
-        uses: actions/checkout@v2
 
       - name: Install packages
         run: brew install ninja upx
@@ -111,18 +111,18 @@ jobs:
   Windows-Build:
     runs-on: windows-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Configure variables (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
         run: |
-          "build_type=${{ github.event.inputs.build_type }}" | Out-File -FilePath $GITHUB_ENV -Append
+          Write-Output "build_type=${{ github.event.inputs.build_type }}" >> $GITHUB_ENV
 
       - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
         run: |
-          "build_type=Release" | Out-File -FilePath $GITHUB_ENV -Append
-
-      - name: Checkout
-        uses: actions/checkout@v2
+          Write-Output "build_type=Release" >> $GITHUB_ENV
 
       - name: Install packages
         run: choco install ninja upx
