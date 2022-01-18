@@ -5,4 +5,5 @@ path_classifiers:
 extraction:
   cpp:
     configure:
-      command: "cmake -S. -B. -DCMAKE_BUILD_TYPE=Release -G Ninja"
+      command: 
+        - cmake -S. -B. -DCMAKE_BUILD_TYPE=Release -G Ninja
