@@ -73,7 +73,7 @@ jobs:
      - name: Configure variables (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
         env: 
-          build_type: ${{ build_type }}
+          build_type: ${{ github.event.inputs.build_type }}
 
       - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
