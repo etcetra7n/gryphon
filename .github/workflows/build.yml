@@ -32,12 +32,12 @@ jobs:
       - name: Configure variables (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
         run: |
-          echo "build_type=$(${{ github.event.inputs.build_type }})" >> ${{ env.GITHUB_ENV }}
+          echo "build_type=$(${{ github.event.inputs.build_type }})" >> $GITHUB_ENV
 
       - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
         run: |
-          echo "build_type=$(Release)" >> ${{ env.GITHUB_ENV }}
+          echo "build_type=$(Release)" >> $GITHUB_ENV
 
 
       - name: Checkout
@@ -74,12 +74,12 @@ jobs:
       - name: Configure variables (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
         run: |
-          echo "build_type=$(${{ github.event.inputs.build_type }})" >> ${{ env.GITHUB_ENV }}
+          echo "build_type=$(${{ github.event.inputs.build_type }})" >> $GITHUB_ENV
 
       - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
         run: | 
-          echo "build_type:$(Release)" >> ${{ env.GITGUB_ENV }}
+          echo "build_type:$(Release)" >> $GITGUB_ENV
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -116,12 +116,12 @@ jobs:
       - name: Configure variables (on manually triggered workflow)
         if: github.event_name == 'workflow_dispatch'
         run: |
-          Write-Host "build_type=$(${{ github.event.inputs.build_type }})" >> ${{ env.GITHUB_ENV }}
+          Write-Host "build_type=$(${{ github.event.inputs.build_type }})" >> $GITHUB_ENV
 
       - name: Configure variables (on automatically triggered workflow)
         if: github.event_name != 'workflow_dispatch'
         run: |
-          Write-Host "build_type=$(Release)" >> ${{ env.GITHUB_ENV }}
+          Write-Host "build_type=$(Release)" >> $GITHUB_ENV
 
 
       - name: Checkout
