@@ -2,9 +2,9 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include "Template/dom.h"
 #include "Parser/parser.h"
 #include "Parser/trim_ends.h"
+#include "Template/dom.h"
 #include "gryphon.h"
 
 namespace Layout
@@ -55,12 +55,12 @@ namespace Layout
            -`open_tags` is an  std::vector<Element*> which holds the pointer 
              to the elements whose corresponding closing tag is not parsed yet
              
-           - `tml` is an instance of Template class, used to store the template
+           - `document` is an instance of Dom class, used to store the template
         */
         
         Parser::Parser parser(buffer.str());
-        std::vector<Template::Element*> open_tags;
         Template::Dom *document = new Template::Dom();
+        std::vector<Template::Element*> open_tags;
         
         if (parser.active())
         {
