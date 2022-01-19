@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 #include <map>
-#include "Template/element.h"
+#include "Template/dom.h"
 
 namespace Template
 {

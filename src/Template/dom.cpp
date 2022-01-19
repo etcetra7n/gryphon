@@ -1,16 +1,16 @@
 #include <vector>
-#include "Template/gtemplate.h"
+#include "Template/dom.h"
 
 namespace Template
 {
-    Element *Gtemplate::new_element()
+    Element *Dom::new_element()
     {
         Element *new_elem = new Element();
         _elements.push_back(new_elem);
         return new_elem;
     }
 
-    std::vector<Element*> Gtemplate::elements()
+    std::vector<Element*> Dom::elements()
     {
         return _elements;
     }

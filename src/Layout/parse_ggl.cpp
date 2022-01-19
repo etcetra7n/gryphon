@@ -1,26 +1,23 @@
 #include <cstdlib>
 #include <string>
-#include <iostream>
 #include <fstream>
 #include <sstream>
-#include "Template/gtemplate.h"
+#include "Template/dom.h"
 #include "Parser/parser.h"
 #include "Parser/trim_ends.h"
 #include "gryphon.h"
 
 namespace Layout
 {
-    Template::Gtemplate *parse_ggl(const std::string filepath)
+    Template::Dom *parse_ggl(const std::string filepath)
     {
         std::ifstream file(filepath, std::ios::in);
         std::stringstream buffer;
-        if(file.good())
-        {
-            buffer << file.rdbuf();
-        } else
+        if(!file.good())
         {
             return nullptr;
         }
+        buffer << file.rdbuf();
         file.close();
         
         /*
@@ -62,9 +59,8 @@ namespace Layout
         */
         
         Parser::Parser parser(buffer.str());
-        delete &buffer;
         std::vector<Template::Element*> open_tags;
-        Template::Gtemplate *tml = new Template::Gtemplate();
+        Template::Dom *document = new Template::Dom();
         
         if (parser.active())
         {
@@ -99,7 +95,7 @@ namespace Layout
                     //non closing tags are either opening tags or attribute
                     //tags. for both of the tags, the name and attributes
                     //are parsed
-                    Template::Element *e = tml->new_element();
+                    Template::Element *e = document->new_element();
                     e->set_name(tag.parse_alpha());
                     while(isalpha(tag.next_non_space_char()))
                     {
@@ -136,6 +132,6 @@ namespace Layout
                 parser.ignore_till("<");
             }
         }
-        return tml;
+        return document;
     }
 }

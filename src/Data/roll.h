@@ -1,18 +1,18 @@
-#ifndef GRYPHON_GDATA_H
-#define GRYPHON_GDATA_H
+#ifndef GRYPHON_ROLL_H
+#define GRYPHON_ROLL_H
 
 #include <stdint.h>
 #include <vector>
 
 namespace Data
 {
-    class Gdata
+    class Roll
     {
       private:
         uint32_t _type;
         std::vector<uint32_t> _uint32;
       public:
-        Gdata();
+        Roll();
         uint32_t type();
         std::vector<uint32_t> data();
     };

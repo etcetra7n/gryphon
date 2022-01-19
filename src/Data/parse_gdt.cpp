@@ -1,11 +1,10 @@
-#include "Data/gdata.h"
-#include "Template/gtemplate.h"
+#include "Data/roll.h"
 #include "gryphon.h"
 
 namespace Data
 {
-    Data *parse_gdt(const std::string filepath)
+    Roll *parse_gdt(const std::string filepath)
     {
-        return new Gdata;
+        return new Roll;
     }
 }
