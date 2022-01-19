@@ -6,6 +6,6 @@ namespace Parser
     uint8_t endian()
     {
         uint16_t _tnum = 0x0001;
-        return (reinterpret_cast<char*>(&_tnum))[0]? LITTLE_ENDIAN : BIG_ENDIAN;
+        return (reinterpret_cast<char*>(&_tnum))[1]? BIG_ENDIAN : LITTLE_ENDIAN;
     }
 }
