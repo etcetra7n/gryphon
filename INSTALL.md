@@ -1,8 +1,6 @@
-```bash
-$ cmake . -G "Unix Makefiles"
+``` bash
+$ cmake . -G Ninja
 $ make
 ```
 
-You could use other cmake generators as well, in case
-"Unix Makefiles" doesn't serve you well. "Ninja" is a reputed
-alternative
+You could use other cmake generators as well, in case you don't have "Ninja" installed. "Unix Makefiles" is a reputed alternative

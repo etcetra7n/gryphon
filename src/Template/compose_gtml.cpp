@@ -6,7 +6,6 @@
 #include <iostream>
 #include "Parser/endian.h"
 #include "Template/gtml.h"
-#include "Template/element.h"
 #include "Template/gtemplate.h"
 #include "gryphon.h"
 

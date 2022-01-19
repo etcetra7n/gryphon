@@ -1,6 +1,4 @@
-#include <iostream>
 #include <vector>
-#include "Template/element.h"
 #include "Template/gtemplate.h"
 
 namespace Template

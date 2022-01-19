@@ -29,22 +29,23 @@ jobs:
   Linux-Build:
     runs-on: ubuntu-latest
     steps:
+      - name: Configure variables (on manually triggered workflow)
+        if: github.event_name == 'workflow_dispatch'
+        run: echo "build_type=${{ github.event.inputs.build_type }}" >> $GITHUB_ENV
+
+      - name: Configure variables (on automatically triggered workflow)
+        if: github.event_name != 'workflow_dispatch'
+        run: echo "build_type=Release" >> $GITHUB_ENV
+
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install packages
+      - name: Install dependencies
         run: sudo apt-get install ninja-build
 
-      - name: Build (on manually triggered workflow)
-        if: github.event_name == 'workflow_dispatch'
+      - name: Build
         run: |
-          cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G Ninja
-          cmake --build _build
-
-      - name: Build (on automatically triggered workflow)
-        if: github.event_name != 'workflow_dispatch'
-        run: |
-          cmake -S. -B _build -DCMAKE_BUILD_TYPE=Release -G Ninja
+          cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ env.build_type }} -G Ninja
           cmake --build _build
 
       - name: Compress
@@ -63,26 +64,27 @@ jobs:
         with:
           name: gryphon-linux
           path: _build/gryphon
-          
+
   MacOS-Build:
     runs-on: macos-latest
     steps:
+      - name: Configure variables (on manually triggered workflow)
+        if: github.event_name == 'workflow_dispatch'
+        run: echo "build_type=${{ github.event.inputs.build_type }}" >> $GITHUB_ENV
+
+      - name: Configure variables (on automatically triggered workflow)
+        if: github.event_name != 'workflow_dispatch'
+        run: echo "build_type=Release" >> $GITHUB_ENV
+
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install packages
+      - name: Install dependencies
         run: brew install ninja upx
 
-      - name: Build (on manually triggered workflow)
-        if: github.event_name == 'workflow_dispatch'
+      - name: Build
         run: |
-          cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G Ninja
-          cmake --build _build
-
-      - name: Build (on automatically triggered workflow)
-        if: github.event_name != 'workflow_dispatch'
-        run: |
-          cmake -S. -B _build -DCMAKE_BUILD_TYPE=Release -G Ninja
+          cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ env.build_type }} -G Ninja
           cmake --build _build
 
       - name: Compress
@@ -105,31 +107,32 @@ jobs:
   Windows-Build:
     runs-on: windows-latest
     steps:
+      - name: Configure variables (on manually triggered workflow)
+        if: github.event_name == 'workflow_dispatch'
+        run: echo "build_type=${{ github.event.inputs.build_type }}" >> $env:GITHUB_ENV
+
+      - name: Configure variables (on automatically triggered workflow)
+        if: github.event_name != 'workflow_dispatch'
+        run: echo "build_type=Release" >> $env:GITHUB_ENV
+
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install packages
+      - name: Install dependencies
         run: choco install ninja upx
 
-      - name: Build (on manually triggered workflow)
-        if: github.event_name == 'workflow_dispatch'
+      - name: Build
         run: |
-          cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ github.event.inputs.build_type }} -G Ninja
-          cmake --build _build
-
-      - name: Build (on automatically triggered workflow)
-        if: github.event_name != 'workflow_dispatch'
-        run: |
-          cmake -S. -B _build -DCMAKE_BUILD_TYPE=Release -G Ninja
+          cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ env.build_type }} -G Ninja
           cmake --build _build
 
       - name: Compress
         run: |
-          Write-Host "Size:"
-          Write-Host((Get-Item _build/gryphon.exe).length)
+          echo "Size:"
+          echo ((Get-Item _build/gryphon.exe).length)
           upx -9 _build/gryphon.exe
-          Write-Host "Size after upx:"
-          Write-Host((Get-Item _build/gryphon.exe).length)
+          echo "Size after upx:"
+          echo ((Get-Item _build/gryphon.exe).length)
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
