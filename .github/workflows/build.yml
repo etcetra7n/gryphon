@@ -7,17 +7,14 @@ on:
       - '.github/**'
       - 'docs/**'
       - 'examples/**'
-
   pull_request:
     branches: [ main ]
     paths-ignore:
       - '.github/**'
       - 'docs/**'
       - 'examples/**'
-
   release:
     types: [released]
-
   workflow_dispatch:
     inputs:
       build_type:
@@ -48,15 +45,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
       - name: Install dependencies
         run: sudo apt-get install ninja-build
-
       - name: Build
         run: |
           cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ needs.configure.outputs.build_type }} -G Ninja
           cmake --build _build
-
       - name: Compress
         run: |
           echo "Size:"
@@ -67,7 +61,6 @@ jobs:
           upx -9 _build/gryphon
           echo "Size after upx:"
           du -b _build/gryphon
-
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
@@ -81,15 +74,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
       - name: Install dependencies
         run: brew install ninja upx
-
       - name: Build
         run: |
           cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ needs.configure.outputs.build_type }} -G Ninja
           cmake --build _build
-
       - name: Compress
         run: |
           echo "Size:"
@@ -100,7 +90,6 @@ jobs:
           upx -9 _build/gryphon
           echo "Size after upx:"
           stat -f%z _build/gryphon
-
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
@@ -114,15 +103,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
       - name: Install dependencies
         run: choco install ninja upx
-
       - name: Build
         run: |
           cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ needs.configure.outputs.build_type }} -G Ninja
           cmake --build _build
-
       - name: Compress
         run: |
           echo "Size:"
@@ -130,7 +116,6 @@ jobs:
           upx -9 _build/gryphon.exe
           echo "Size after upx:"
           echo ((Get-Item _build/gryphon.exe).length)
-
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
