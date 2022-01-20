@@ -119,9 +119,9 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: gryphon-windows.exe
+          name: gryphon-win-x64.exe
           path: _build/gryphon.exe
-          
+
   win32_build:
     name: Windows x86 Build
     runs-on: windows-latest
@@ -145,5 +145,5 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: gryphon-windows.exe
+          name: gryphon-win-x86.exe
           path: _build/gryphon.exe
