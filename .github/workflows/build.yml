@@ -134,16 +134,16 @@ jobs:
       - name: Build
         run: |
           cmake -G "Visual Studio 16 2019" -A Win32 -S. -B _build
-          cmake --build _build --config Release
+          cmake --build _build --config ${{ needs.configure.outputs.build_type }}
       - name: Compress
         run: |
           echo "Size:"
-          echo ((Get-Item _build/gryphon.exe).length)
-          upx -9 _build/gryphon.exe
+          echo ((Get-Item _build/${{ needs.configure.outputs.build_type }}/gryphon.exe).length)
+          upx -9 _build/${{ needs.configure.outputs.build_type }}/gryphon.exe
           echo "Size after upx:"
-          echo ((Get-Item _build/gryphon.exe).length)
+          echo ((Get-Item _build/${{ needs.configure.outputs.build_type }}/gryphon.exe).length)
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: gryphon-win-x86.exe
-          path: _build/gryphon.exe
+          path: _build/${{ needs.configure.outputs.build_type }}/gryphon.exe
