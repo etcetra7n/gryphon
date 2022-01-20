@@ -10,6 +10,7 @@
 #define BSWAP32(x) (__builtin_bswap32(x))
 #define BSWAP64(x) (__builtin_bswap64(x))
 #else
+#include <intrin.h>
 #define BSWAP32(x) (_byteswap_ulong(x))
 #define BSWAP64(x) (_byteswap_uint64(x))
 #endif
