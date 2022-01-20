@@ -96,8 +96,8 @@ jobs:
           name: gryphon-macos
           path: _build/gryphon
 
-  windows_build:
-    name: Windows Build
+  win64_build:
+    name: Windows x64 Build
     runs-on: windows-latest
     needs: configure
     steps:
@@ -108,6 +108,32 @@ jobs:
       - name: Build
         run: |
           cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ needs.configure.outputs.build_type }} -G Ninja
+          cmake --build _build
+      - name: Compress
+        run: |
+          echo "Size:"
+          echo ((Get-Item _build/gryphon.exe).length)
+          upx -9 _build/gryphon.exe
+          echo "Size after upx:"
+          echo ((Get-Item _build/gryphon.exe).length)
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: gryphon-windows.exe
+          path: _build/gryphon.exe
+          
+  win32_build:
+    name: Windows x86 Build
+    runs-on: windows-latest
+    needs: configure
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: choco install ninja upx
+      - name: Build
+        run: |
+          cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ needs.configure.outputs.build_type }} -DBUILD_PLATFORM=x86 -G Ninja
           cmake --build _build
       - name: Compress
         run: |
