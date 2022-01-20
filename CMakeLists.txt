@@ -4,7 +4,7 @@ project(Gryphon VERSION 0.1.0)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wextra -Wpedantic")
 
-if(BUILD_PLATFORM STREQUAL "win32")
+if(TARGET_PLATFORM STREQUAL "win32")
     set(CMAKE_CXX_COMPILER "x86_64-w64-mingw32-g++")
     set(CMAKE_C_COMPILER "x86_64-w64-mingw32-gcc")
 endif()
