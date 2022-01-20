@@ -16,7 +16,7 @@ endif()
 if(CMAKE_BUILD_TYPE STREQUAL "MinSizeRel")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Os")
 endif()
-if(BUILD_PLATFORM STREQUAL "x86")
+if(BUILD_PLATFORM STREQUAL "win32")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32")
 endif()
 
