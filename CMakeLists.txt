@@ -2,13 +2,9 @@ cmake_minimum_required(VERSION 3.2)
 project(Gryphon VERSION 0.1.0)
 
 set(CMAKE_CXX_STANDARD 14)
-if(CMAKE_COMPILER_IS_GNUCXX)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wextra -Wpedantic")
-endif()
-
-if(TARGET_PLATFORM STREQUAL "win32")
-    set(CMAKE_CXX_COMPILER "x86_64-w64-mingw32-g++")
-    set(CMAKE_C_COMPILER "x86_64-w64-mingw32-gcc")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wextra -Wpedantic")
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall")
 endif()
 
 include_directories(
