@@ -133,8 +133,8 @@ jobs:
         run: choco install ninja upx
       - name: Build
         run: |
-          cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ needs.configure.outputs.build_type }} -DTARGET_PLATFORM=win32 -G "Visual Studio 16 2019" -A Win32
-          cmake --build _build
+          cmake -G "Visual Studio 16 2019" -A Win32 -S. -B _build
+          cmake --build _build --config Release
       - name: Compress
         run: |
           echo "Size:"
