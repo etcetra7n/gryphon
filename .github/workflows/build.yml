@@ -102,7 +102,6 @@ jobs:
   win32_build:
     name: Windows x86 Build
     runs-on: windows-latest
-    needs: configure
     steps:
       - name: Checkout
         uses: actions/checkout@v2
