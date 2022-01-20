@@ -38,7 +38,7 @@ jobs:
           if (${{ github.event_name }} == 'workflow_dispatch'); then
             echo "::set-output name=build_type::'${{ github.event.inputs.build_type }}'"
           else
-            echo "::set-output name=build_type::'Release'"
+            echo "::set-output name=build_type::Release"
           fi
 
   linux_build:
