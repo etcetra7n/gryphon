@@ -130,7 +130,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install dependencies
-        run: choco install gcc-multilib ninja upx
+        run: choco install ninja upx
       - name: Build
         run: |
           cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ needs.configure.outputs.build_type }} -DBUILD_PLATFORM=win32 -G Ninja
