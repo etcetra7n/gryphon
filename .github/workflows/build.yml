@@ -133,7 +133,7 @@ jobs:
         run: choco install gcc-multilib ninja upx
       - name: Build
         run: |
-          cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ needs.configure.outputs.build_type }} -DBUILD_PLATFORM=x86 -G Ninja
+          cmake -S. -B _build -DCMAKE_BUILD_TYPE=${{ needs.configure.outputs.build_type }} -DBUILD_PLATFORM=win32 -G Ninja
           cmake --build _build
       - name: Compress
         run: |
