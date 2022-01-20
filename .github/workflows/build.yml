@@ -109,7 +109,7 @@ jobs:
         run: choco install upx
       - name: Build
         run: |
-          cmake -S. -B _build -A Win32 -G "Visual Studio 17 2022"
+          cmake -S. -B _build -A Win32 -G "Visual Studio 16 2019"
           cmake --build _build --config Release
       - name: Compress
         run: |
