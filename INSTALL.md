@@ -1,4 +1,4 @@
-``` bash
+```shell
 $ cmake . -G Ninja
 $ make
 ```
