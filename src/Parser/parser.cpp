@@ -3,11 +3,10 @@
 
 namespace Parser
 {
-    Parser::Parser(const std::string rstr)
-    {
-        _raw_str = rstr;
-        _cursor = 0;
-    }
+    Parser::Parser(const std::string rstr): 
+        _raw_str(rstr), 
+        _cursor(0) 
+    {}
 
     bool Parser::active()
     {
