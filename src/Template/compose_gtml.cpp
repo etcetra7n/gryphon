@@ -45,7 +45,7 @@ namespace Template
             if(elements[i]->parent() != nullptr)
             {
                 std::vector<Element*>::size_type j = i;
-                for (;j>=0; j--)
+                for (; j<=i; j--)
                 {
                     if (elements[j] == elements[i]->parent())
                     {
