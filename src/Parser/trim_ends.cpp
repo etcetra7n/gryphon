@@ -12,7 +12,7 @@ namespace Parser
             if (!isspace(str[begin]))
                 break;
         }
-        for (end = str.size()-1; end >= 0; end--)
+        for (end = str.size()-1; end >= begin; end--)
         {
             if (!isspace(str[end]))
                 break;
