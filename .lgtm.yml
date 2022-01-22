@@ -1,5 +1,8 @@
+path_classifiers:
+  docs: "docs"
+
 extraction:
   cpp:
     configure:
-      command: 
+      command:
         - cmake -S. -B. -DCMAKE_BUILD_TYPE=Release -G Ninja
