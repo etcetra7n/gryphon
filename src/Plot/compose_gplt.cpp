@@ -4,7 +4,7 @@
 
 namespace Plot
 {
-    int compose_gplt(Dom*, Roll*)
+    int compose_gplt(Dom&, Roll&)
     {
         return 0;
     }

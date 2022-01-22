@@ -11,7 +11,7 @@
 
 namespace Template
 {
-    int compose_gtml(Dom *document, const std::string filepath)
+    int compose_gtml(Dom &document, const std::string &filepath)
     {
         std::ofstream file(filepath, std::ios::out | std::ios::binary);
         if(!file.good())
@@ -19,7 +19,7 @@ namespace Template
             return 1;
         }
         
-        std::vector<Element*> elements = document->elements();
+        std::vector<Element*> elements = document.elements();
         uint32_t major_version = Parser::hton_32(GRYPHON_GTML_MAJOR_VERSION);
         uint32_t minor_version = Parser::hton_32(GRYPHON_GTML_MINOR_VERSION);
         uint32_t patch_version = Parser::hton_32(GRYPHON_GTML_PATCH_VERSION);

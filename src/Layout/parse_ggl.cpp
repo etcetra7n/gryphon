@@ -9,13 +9,13 @@
 
 namespace Layout
 {
-    Template::Dom *parse_ggl(const std::string filepath)
+    int parse_ggl(Template::Dom &document, const std::string &filepath)
     {
         std::ifstream file(filepath, std::ios::in);
         std::stringstream buffer;
         if(!file.good())
         {
-            return nullptr;
+            return 1;
         }
         buffer << file.rdbuf();
         file.close();
@@ -24,10 +24,10 @@ namespace Layout
           Technical notes on parsing process:
           
           All the parsing happens inside a while loop which runs as long as the
-          parser has a content to parse. 
+          parser has a content to parse.
           
-          Inside the loop the tags are stored into an instace of the Parser 
-          classwhich parses the individual tags. Each type of tags gets 
+          Inside the loop the tags are stored into an instace of the Parser
+          classwhich parses the individual tags. Each type of tags gets
           processed in the a if or an else block designated for it.
       
           Here are the four types of tags:
@@ -59,7 +59,6 @@ namespace Layout
         */
         
         Parser::Parser parser(buffer.str());
-        Template::Dom *document = new Template::Dom();
         std::vector<Template::Element*> open_tags;
         
         if (parser.active())
@@ -87,7 +86,7 @@ namespace Layout
                     }
                     else {
                         //Only the most recently opened tag can be closed
-                        return nullptr;
+                        return 1;
                     }
                 }
                 else
@@ -95,7 +94,7 @@ namespace Layout
                     //non closing tags are either opening tags or attribute
                     //tags. for both of the tags, the name and attributes
                     //are parsed
-                    Template::Element *e = document->new_element();
+                    Template::Element *e = document.new_element();
                     e->set_name(tag.parse_alpha());
                     while(isalpha(tag.next_non_space_char()))
                     {
@@ -132,6 +131,6 @@ namespace Layout
                 parser.ignore_till("<");
             }
         }
-        return document;
+        return 0;
     }
 }

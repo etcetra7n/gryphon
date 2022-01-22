@@ -19,20 +19,20 @@ struct pixel{
 };
 namespace Layout
 {
-    Template::Dom *parse_ggl(const std::string);
+    int parse_ggl(Template::Dom&, const std::string&);
 }
 namespace Template
 {
-    int compose_gtml(Dom*, const std::string);
-    Dom *parse_gtml(const std::string);
+    int compose_gtml(Dom&, const std::string&);
+    int parse_gtml(Dom&, const std::string&);
 }
 namespace Data
 {
-    Roll *parse_gdt(const std::string);
+    int parse_gdt(Roll&, const std::string&);
 }
 namespace Plot
 {
-    int compose_gplt(Template::Dom*, Data::Roll*);
+    int compose_gplt(Template::Dom&, Data::Roll&);
 }
 namespace Graph
 {

@@ -3,7 +3,7 @@
 
 namespace Parser
 {
-    std::string trim_ends(const std::string str)
+    std::string trim_ends(const std::string &str)
     {
         std::string::size_type begin;
         std::string::size_type end;
