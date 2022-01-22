@@ -1,3 +1,4 @@
+#include <string>
 #include "Data/roll.h"
 #include "gryphon.h"
 
