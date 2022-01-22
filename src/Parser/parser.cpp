@@ -3,9 +3,9 @@
 
 namespace Parser
 {
-    Parser::Parser(const std::string rstr): 
-        _raw_str(rstr), 
-        _cursor(0) 
+    Parser::Parser(const std::string &rstr):
+        _raw_str(rstr),
+        _cursor(0)
     {}
 
     bool Parser::active()
@@ -24,7 +24,7 @@ namespace Parser
         return res;
     }
 
-    void Parser::ignore_till(const std::string sequence)
+    void Parser::ignore_till(const std::string &sequence)
     {
         /*Places the pointer right after the first occurence of 'sequence'*/
         std::string::size_type occ = _raw_str.find(sequence, _cursor);
@@ -32,7 +32,7 @@ namespace Parser
             _cursor = occ+1;
     }
 
-    std::string Parser::parse_till(const std::string sequence)
+    std::string Parser::parse_till(const std::string &sequence)
     {
         /*returns the string beteen the cursor and the sequence, 
         not including the sequence itself, and places the cursor right
@@ -74,7 +74,7 @@ namespace Parser
         return _raw_str.substr(begin, end-begin);
     }
 
-    bool Parser::begins_with(const std::string sequence)
+    bool Parser::begins_with(const std::string &sequence)
     {
         /*returns true if sequence is the substring that follows either 
         immediately or after some whitespace charecters after the cursor,
