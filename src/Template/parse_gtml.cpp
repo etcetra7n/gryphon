@@ -8,7 +8,7 @@
 
 namespace Template
 {
-    int parse_gtml(Dom *document, std::string filepath)
+    int parse_gtml(Dom *document, const std::string &filepath)
     {
         std::ifstream file(filepath, std::ios::in);
         std::stringstream buffer;

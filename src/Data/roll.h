@@ -13,8 +13,9 @@ namespace Data
         std::vector<uint32_t> _uint32;
       public:
         Roll();
-        uint32_t type();
-        std::vector<uint32_t> data();
+        uint32_t type() const;
+        std::vector<uint32_t>::size_type size() const;
+        std::vector<uint32_t> data() const;
     };
 }
 

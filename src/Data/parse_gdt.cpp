@@ -4,7 +4,7 @@
 
 namespace Data
 {
-    int parse_gdt(Roll *roll, std::string filepath)
+    int parse_gdt(Roll *roll, const std::string &filepath)
     {
         return 0;
     }

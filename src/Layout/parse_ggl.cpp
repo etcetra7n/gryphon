@@ -9,7 +9,7 @@
 
 namespace Layout
 {
-    int parse_ggl(Template::Dom *document, std::string filepath)
+    int parse_ggl(Template::Dom *document, const std::string &filepath)
     {
         std::ifstream file(filepath, std::ios::in);
         std::stringstream buffer;
