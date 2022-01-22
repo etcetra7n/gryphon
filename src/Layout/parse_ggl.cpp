@@ -9,7 +9,7 @@
 
 namespace Layout
 {
-    int parse_ggl(Template::Dom &document, const std::string &filepath)
+    int parse_ggl(Template::Dom *document, std::string filepath)
     {
         std::ifstream file(filepath, std::ios::in);
         std::stringstream buffer;
@@ -54,8 +54,6 @@ namespace Layout
          
            -`open_tags` is an  std::vector<Element*> which holds the pointer 
              to the elements whose corresponding closing tag is not parsed yet
-             
-           - `document` is an instance of Dom class, used to store the template
         */
         
         Parser::Parser parser(buffer.str());
@@ -94,7 +92,7 @@ namespace Layout
                     //non closing tags are either opening tags or attribute
                     //tags. for both of the tags, the name and attributes
                     //are parsed
-                    Template::Element *e = document.new_element();
+                    Template::Element *e = document->new_element();
                     e->set_name(tag.parse_alpha());
                     while(isalpha(tag.next_non_space_char()))
                     {

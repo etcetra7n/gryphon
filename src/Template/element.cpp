@@ -11,27 +11,27 @@ namespace Template
         _parent = nullptr;
     }
 
-    std::string Element::name()
+    std::string Element::name() const
     {
         return _name;
     }
 
-    std::string Element::value()
+    std::string Element::value() const
     {
         return _value;
     }
 
-    std::map<std::string, std::string> Element::attributes()
+    std::map<std::string, std::string> Element::attributes() const
     {
         return _attr;
     }
 
-    std::vector<Element*> Element::children()
+    std::vector<Element*> Element::children() const
     {
         return _children;
     }
 
-    Element *Element::parent()
+    Element *Element::parent() const
     {
         return _parent;
     }

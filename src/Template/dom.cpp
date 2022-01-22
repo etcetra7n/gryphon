@@ -10,7 +10,7 @@ namespace Template
         return new_elem;
     }
 
-    std::vector<Element*> Dom::elements()
+    std::vector<Element*> Dom::elements() const
     {
         return _elements;
     }

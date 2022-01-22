@@ -20,11 +20,11 @@ namespace Template
         std::vector<Element*> _children;
       public:
         Element();
-        std::string name();
-        std::string value();
-        std::map<std::string, std::string> attributes();
-        std::vector<Element*> children();
-        Element *parent();
+        std::string name() const;
+        std::string value() const;
+        std::map<std::string, std::string> attributes() const;
+        std::vector<Element*> children() const;
+        Element *parent() const;
         void set_name(const std::string);
         void set_value(const std::string);
         void add_attr(const std::string, const std::string);
@@ -37,7 +37,7 @@ namespace Template
         std::vector<Element*> _elements;
       public:
         Element *new_element();
-        std::vector<Element*> elements();
+        std::vector<Element*> elements() const;
     };
 }
 
