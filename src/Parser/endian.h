@@ -17,7 +17,7 @@
 
 namespace Parser
 {
-    constexpr uint8_t endian();
+    uint8_t endian();
     inline uint32_t hton_32(const uint32_t x)
     {
         return ((endian() == BIG_ENDIAN_ORDER)? x : BSWAP32(x));
