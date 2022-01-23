@@ -7,9 +7,6 @@
 
 namespace Template
 {
-    class Element;
-    class Dom;
-    
     class Element
     {
       private:
