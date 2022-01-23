@@ -1,6 +1,6 @@
 path_classifiers:
   template: 
-    - docs/setup.py
+    - docs/conf.py
 
 extraction:
   cpp:
