@@ -6,10 +6,9 @@
 
 namespace Template
 {
-    Element::Element()
-    {
-        _parent = nullptr;
-    }
+    Element::Element():
+        _parent(nullptr)
+    {}
 
     std::string Element::name() const
     {
@@ -36,19 +35,24 @@ namespace Template
         return _parent;
     }
 
-    void Element::set_name(const std::string name)
+    void Element::set_name(const std::string &name)
     {
         _name = name;
     }
 
-    void Element::set_value(const std::string value)
+    void Element::set_value(const std::string &value)
     {
         _value = value;
     }
 
-    void Element::add_attr(const std::string name, const std::string value)
+    void Element::add_attr(const std::string &name, const std::string &value)
     {
         _attr.insert({name, value});
+    }
+    
+    void Element::set_parent(Element *parent)
+    {
+        _parent = parent;
     }
 
     void Element::append_child(Element* child)

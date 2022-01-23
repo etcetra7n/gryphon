@@ -76,7 +76,7 @@ namespace Layout
                     //For every closing tag, the last element of the 
                     //open_tags vector is removed
                     tag.ignore_till("/");
-                    std::string e_name = tag.parse_alpha();
+                    std::string e_name = tag.parse_word();
                     if(open_tags[open_tags.size()-1]->name() == e_name)
                     {
                         open_tags.pop_back();
@@ -93,10 +93,10 @@ namespace Layout
                     //tags. for both of the tags, the name and attributes
                     //are parsed
                     Template::Element *e = document->new_element();
-                    e->set_name(tag.parse_alpha());
-                    while(isalpha(tag.next_non_space_char()))
+                    e->set_name(tag.parse_word());
+                    while(isalpha(tag.next_glyph()))
                     {
-                        std::string attr_n = tag.parse_alpha();
+                        std::string attr_n = tag.parse_word();
                         tag.ignore_till("=");
                         tag.ignore_till("\"");
                         std::string attr_v = tag.parse_till("\"");
@@ -108,7 +108,7 @@ namespace Layout
                         //parent
                         open_tags[open_tags.size()-1]->append_child(e);
                     }
-                    if (tag.next_non_space_char() == '/')
+                    if (tag.next_glyph() == '/')
                     {
                         //For attribute tags, there is nothing to parse now.
                         //The cursor is placed a convinient position

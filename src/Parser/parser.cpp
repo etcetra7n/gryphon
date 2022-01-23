@@ -1,10 +1,11 @@
+#include <stdint.h>
 #include <string>
 #include "parser.h"
 
 namespace Parser
 {
     Parser::Parser(const std::string &rstr):
-        _raw_str(rstr),
+        _rstr(rstr),
         _cursor(0)
     {}
 
@@ -13,9 +14,9 @@ namespace Parser
         /*Returns true if the part of the raw string that comes
         after the cursor has non space charecters to parse*/
         bool res = false;
-        for (std::string::size_type i = _cursor; i < _raw_str.size(); i++)
+        for (std::string::size_type i = _cursor; i < _rstr.size(); i++)
         {
-            if (!isspace(_raw_str[i]))
+            if (!isspace(_rstr[i]))
             {
                 res = true;
                 break;
@@ -24,12 +25,81 @@ namespace Parser
         return res;
     }
 
-    void Parser::ignore_till(const std::string &sequence)
+    int32_t Parser::parse_int32()
     {
-        /*Places the pointer right after the first occurence of 'sequence'*/
-        std::string::size_type occ = _raw_str.find(sequence, _cursor);
-        if (occ != std::string::npos)
-            _cursor = occ+1;
+        _cursor += 4;
+        return reinterpret_cast<int32_t>(_rstr.substr(_cursor, 4).c_str());
+    }
+    int64_t Parser::parse_int64()
+    {
+        _cursor += 8;
+        return reinterpret_cast<int64_t>(_rstr.substr(_cursor, 8).c_str());
+    }
+    char Parser::next_char()
+    {
+        /*returns the charecter right after the cursor without moving the cursor*/
+        return _rstr[_cursor+1];
+    }
+
+    char Parser::next_glyph()
+    {
+        /*returns the charecter that follows either immediately or after some
+        whitespacecharecters after the cursor, without moving the cursor. 
+        If there is no upcomming charecter, then a space ' ' is returned*/
+        if (_rstr.size() > _cursor)
+        {
+            std::string::size_type index;
+            for (index = _cursor; index < _rstr.size(); index++)
+            {
+                if (!isspace(_rstr[index]))
+                    break;
+            }
+            return _rstr[index];
+        }
+        else
+        {
+            return ' ';
+        }
+    }
+
+    bool Parser::begins_with(const std::string &sequence)
+    {
+        /*returns true if sequence is the substring that follows either 
+        immediately or after some whitespace charecters after the cursor,
+        without moving the cursor pointer*/
+        std::string::size_type begin;
+        for (begin = _cursor; begin < _rstr.size(); begin++)
+        {
+            if (!isspace(_rstr[begin]))
+                break;
+        }
+        if (_rstr.size()-begin >= sequence.size())
+            return (_rstr.substr(begin, sequence.size()) == sequence);
+        else 
+            return false;
+    }
+
+    std::string Parser::parse_word()
+    {
+        /*returns a string containing a sequence of non-space charecters
+        that comes after the cursor, and places the cursor right after
+        the sequence*/
+        std::string::size_type begin;
+        std::string::size_type end;
+        for (begin = _cursor; begin < _rstr.size(); begin++)
+        {
+            if (!isspace(_rstr[begin]))
+            {
+                break;
+            }
+        }
+        for (end = begin+1; end < _rstr.size(); end++)
+        {
+            if (!isalnum(_rstr[end]))
+                break;
+        }
+        _cursor = end;
+        return _rstr.substr(begin, end-begin);
     }
 
     std::string Parser::parse_till(const std::string &sequence)
@@ -39,11 +109,11 @@ namespace Parser
         after the sequence. Returns an empty string "" if the sequence
         is not found*/
         std::string::size_type begin = _cursor;
-        std::string::size_type end = _raw_str.find(sequence, _cursor);
+        std::string::size_type end = _rstr.find(sequence, _cursor);
         if (end != std::string::npos)
         {
             _cursor = end+1;
-            return _raw_str.substr(begin, end-begin);
+            return _rstr.substr(begin, end-begin);
         }
         else
         {
@@ -51,64 +121,22 @@ namespace Parser
         }
     }
 
-    std::string Parser::parse_alpha()
+    void Parser::ignore_till(const std::string &sequence)
     {
-        /*returns a string containing a sequence of non-space charecters
-        that comes after the cursor, and places the cursor right after
-        the sequence*/
-        std::string::size_type begin;
-        std::string::size_type end;
-        for (begin = _cursor; begin < _raw_str.size(); begin++)
-        {
-            if (!isspace(_raw_str[begin]))
-            {
-                break;
-            }
-        }
-        for (end = begin+1; end < _raw_str.size(); end++)
-        {
-            if (!isalnum(_raw_str[end]))
-                break;
-        }
-        _cursor = end;
-        return _raw_str.substr(begin, end-begin);
+        /*Places the pointer right after the first occurence of 'sequence'*/
+        std::string::size_type occ = _rstr.find(sequence, _cursor);
+        if (occ != std::string::npos)
+            _cursor = occ+1;
     }
 
-    bool Parser::begins_with(const std::string &sequence)
+    void Parser::jump(std::string::size_type n)
     {
-        /*returns true if sequence is the substring that follows either 
-        immediately or after some whitespace charecters after the cursor,
-        without moving the cursor pointer*/
-        std::string::size_type begin;
-        for (begin = _cursor; begin < _raw_str.size(); begin++)
-        {
-            if (!isspace(_raw_str[begin]))
-                break;
-        }
-        if (_raw_str.size()-begin >= sequence.size())
-            return (_raw_str.substr(begin, sequence.size()) == sequence);
-        else 
-            return false;
-    }
-
-    char Parser::next_non_space_char()
-    {
-        /*returns the charecter that follows either immediately or after some
-        whitespacecharecters after the cursor, without moving the cursor. 
-        If there is no upcomming charecter, then a space ' ' is returned*/
-        if (_raw_str.size() > _cursor)
-        {
-            std::string::size_type index;
-            for (index = _cursor; index < _raw_str.size(); index++)
-            {
-                if (!isspace(_raw_str[index]))
-                    break;
-            }
-            return _raw_str[index];
-        }
+        /*places the cursor n charecters after it's current position, but
+        no longer than the string bounds*/
+        if((_cursor+n) < _rstr.size())
+            _cursor += n;
         else
-        {
-            return ' ';
-        }
+            _cursor = _rstr.size()-1;
     }
 }
+
