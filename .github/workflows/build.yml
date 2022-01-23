@@ -38,7 +38,7 @@ jobs:
         run: sudo apt-get install ninja-build
       - name: Build
         run: |
-          cmake -S. -B _build -DCMAKE_BUILD_TYPE=Release -G Ninja
+          cmake -S. -B _build -DCMAKE_CXX_COMPILER=g++-10 -DCMAKE_BUILD_TYPE=Release -G Ninja
           cmake --build _build
       - name: Compress
         run: |
@@ -99,15 +99,15 @@ jobs:
       - name: Compress
         run: |
           echo "Size:"
-          echo ((Get-Item _build/gryphon.exe).length)
-          upx -9 _build/gryphon.exe
+          echo ((Get-Item _build/Release/gryphon.exe).length)
+          upx -9 _build/Release/gryphon.exe
           echo "Size after upx:"
-          echo ((Get-Item _build/gryphon.exe).length)
+          echo ((Get-Item _build/Release/gryphon.exe).length)
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: gryphon-win-x64.exe
-          path: _build/gryphon.exe
+          path: _build/Release/gryphon.exe
 
   win32_build:
     name: Windows x86 Build
