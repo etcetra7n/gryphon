@@ -28,13 +28,17 @@ namespace Parser
     int32_t Parser::parse_int32()
     {
         _cursor += 4;
-        return reinterpret_cast<int32_t>(_rstr.substr(_cursor, 4).c_str());
+        const char *str = _rstr.substr(_cursor, 4).c_str();
+        return reinterpret_cast<int32_t>(&str);
     }
+
     int64_t Parser::parse_int64()
     {
         _cursor += 8;
-        return reinterpret_cast<int64_t>(_rstr.substr(_cursor, 8).c_str());
+        const char *str = _rstr.substr(_cursor, 8).c_str();
+        return reinterpret_cast<int64_t>(&str);
     }
+
     char Parser::next_char()
     {
         /*returns the charecter right after the cursor without moving the cursor*/
@@ -44,7 +48,7 @@ namespace Parser
     char Parser::next_glyph()
     {
         /*returns the charecter that follows either immediately or after some
-        whitespacecharecters after the cursor, without moving the cursor. 
+        whitespacecharecters after the cursor, without moving the cursor.
         If there is no upcomming charecter, then a space ' ' is returned*/
         if (_rstr.size() > _cursor)
         {
@@ -64,7 +68,7 @@ namespace Parser
 
     bool Parser::begins_with(const std::string &sequence)
     {
-        /*returns true if sequence is the substring that follows either 
+        /*returns true if sequence is the substring that follows either
         immediately or after some whitespace charecters after the cursor,
         without moving the cursor pointer*/
         std::string::size_type begin;
@@ -75,7 +79,7 @@ namespace Parser
         }
         if (_rstr.size()-begin >= sequence.size())
             return (_rstr.substr(begin, sequence.size()) == sequence);
-        else 
+        else
             return false;
     }
 
@@ -104,7 +108,7 @@ namespace Parser
 
     std::string Parser::parse_till(const std::string &sequence)
     {
-        /*returns the string beteen the cursor and the sequence, 
+        /*returns the string beteen the cursor and the sequence,
         not including the sequence itself, and places the cursor right
         after the sequence. Returns an empty string "" if the sequence
         is not found*/
