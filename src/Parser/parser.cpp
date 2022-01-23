@@ -1,3 +1,5 @@
+#include <cstdlib>
+#include <stdlib.h>
 #include <stdint.h>
 #include <string>
 #include "parser.h"
@@ -28,15 +30,13 @@ namespace Parser
     int32_t Parser::parse_int32()
     {
         _cursor += 4;
-        const char *str = _rstr.substr(_cursor, 4).c_str();
-        return reinterpret_cast<int32_t>(&str);
+        return _atoi64(_rstr.substr(_cursor, 4).c_str());
     }
 
     int64_t Parser::parse_int64()
     {
         _cursor += 8;
-        const char *str = _rstr.substr(_cursor, 8).c_str();
-        return reinterpret_cast<int64_t>(&str);
+        return _atoi64(_rstr.substr(_cursor, 8).c_str());
     }
 
     char Parser::next_char()
