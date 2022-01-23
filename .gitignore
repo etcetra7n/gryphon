@@ -135,6 +135,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+_build/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -489,8 +490,7 @@ FodyWeavers.xsd
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
-### Build directories ###
-_build/
+### Sphinx build results ###
 docs/_build/
 
 ### Others ###
