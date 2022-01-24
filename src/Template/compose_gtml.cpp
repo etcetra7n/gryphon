@@ -3,7 +3,6 @@
 #include <fstream>
 #include <ios>
 #include <algorithm>
-#include <iostream>
 #include "Parser/endian.h"
 #include "Template/gtml.h"
 #include "Template/dom.h"
@@ -18,7 +17,7 @@ namespace Template
         {
             return 1;
         }
-        
+
         std::vector<Element*> elements = document.elements();
         uint32_t major_version = Parser::hton_32(GRYPHON_GTML_MAJOR_VERSION);
         uint32_t minor_version = Parser::hton_32(GRYPHON_GTML_MINOR_VERSION);
@@ -29,7 +28,7 @@ namespace Template
         file.write(reinterpret_cast<char*>(&minor_version), sizeof(minor_version));
         file.write(reinterpret_cast<char*>(&patch_version), sizeof(patch_version));
         file.write(reinterpret_cast<char*>(&size), sizeof(size));
-        
+
         for (std::vector<Element*>::size_type i = 0; i < elements.size(); i++)
         {
             std::string name = elements[i]->name();

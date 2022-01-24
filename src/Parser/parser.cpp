@@ -1,5 +1,5 @@
 #include <cstdlib>
-#include <stdlib.h>
+#include <cstring>
 #include <stdint.h>
 #include <string>
 #include "parser.h"
@@ -29,14 +29,18 @@ namespace Parser
 
     int32_t Parser::parse_int32()
     {
+        /*parser 4 bytes converts them to int32_t and returns the result*/
         _cursor += 4;
-        return _atoi64(_rstr.substr(_cursor, 4).c_str());
+        const char *str = _rstr.substr(_cursor, 4).c_str();
+        return (int64_t)*str;
     }
 
     int64_t Parser::parse_int64()
     {
+        /*parser 8 bytes converts them to int64_t and returns the result*/
         _cursor += 8;
-        return _atoi64(_rstr.substr(_cursor, 8).c_str());
+        const char *str = _rstr.substr(_cursor, 8).c_str();
+        return (int32_t)*str;
     }
 
     char Parser::next_char()
@@ -93,9 +97,7 @@ namespace Parser
         for (begin = _cursor; begin < _rstr.size(); begin++)
         {
             if (!isspace(_rstr[begin]))
-            {
                 break;
-            }
         }
         for (end = begin+1; end < _rstr.size(); end++)
         {
