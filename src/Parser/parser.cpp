@@ -33,7 +33,7 @@ namespace Parser
         _cursor += 4;
         int32_t n;
         const char *str = _rstr.substr(_cursor, 4).c_str();
-        memcpy(&n, str, 4)
+        memcpy(&n, str, 4);
         return n;
     }
 
@@ -43,7 +43,7 @@ namespace Parser
         _cursor += 8;
         int64_t n;
         const char *str = _rstr.substr(_cursor, 8).c_str();
-        memcpy(&n, str, 8)
+        memcpy(&n, str, 8);
         return n;
     }
 
