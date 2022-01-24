@@ -15,6 +15,7 @@ namespace Template
         std::ofstream file(filepath, std::ios::out | std::ios::binary);
         if(!file.good())
         {
+            file.close();
             return 1;
         }
 
@@ -59,6 +60,7 @@ namespace Template
                 file.write("\0\0\0\0\0\0\0\0", 8);
             }
         }
+        file.close();
         return 0;
     }
 }

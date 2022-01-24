@@ -14,6 +14,7 @@ namespace Template
         std::stringstream buffer;
         if(!file.good())
         {
+            file.close();
             return 1;
         }
         buffer << file.rdbuf();
@@ -49,7 +50,6 @@ namespace Template
         {
             return 1;
         }
-
         return 0;
     }
 }
