@@ -17,7 +17,7 @@ namespace Template
         Element*                              _parent;
         std::vector<Element*>                 _children;
       public:
-        Element();
+                                              Element();
         std::string                           name() const;
         std::string                           value() const;
         std::map<std::string, std::string>    attributes() const;

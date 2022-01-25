@@ -12,7 +12,7 @@ namespace Data
         uint32_t                            _type;
         std::vector<uint32_t>               _uint32;
       public:
-        Roll();
+                                            Roll();
         uint32_t                            type() const;
         std::vector<uint32_t>::size_type    size() const;
         std::vector<uint32_t>               data() const;
