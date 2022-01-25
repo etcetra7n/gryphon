@@ -9,13 +9,13 @@ namespace Data
     class Roll
     {
       private:
-        uint32_t _type;
-        std::vector<uint32_t> _uint32;
+        uint32_t                            _type;
+        std::vector<uint32_t>               _uint32;
       public:
         Roll();
-        uint32_t type() const;
-        std::vector<uint32_t>::size_type size() const;
-        std::vector<uint32_t> data() const;
+        uint32_t                            type() const;
+        std::vector<uint32_t>::size_type    size() const;
+        std::vector<uint32_t>               data() const;
     };
 }
 

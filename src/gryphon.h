@@ -23,7 +23,7 @@ namespace Layout
 }
 namespace Template
 {
-    int compose_gtml(const Dom&, const std::string&);
+    int compose_gtml(Dom*, const std::string&);
     int parse_gtml(Dom*, const std::string&);
 }
 namespace Data
@@ -32,7 +32,7 @@ namespace Data
 }
 namespace Plot
 {
-    int compose_gplt(const Template::Dom&, const Data::Roll&);
+    int compose_gplt(Template::Dom*, Data::Roll*);
 }
 namespace Graph
 {
