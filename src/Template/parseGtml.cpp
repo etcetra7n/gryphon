@@ -44,7 +44,6 @@ namespace Template
                 parser.jump(1);
                 e->setParent(document->getElementByIndex(parser.parseInt64()));
             }
-
         }
         else
         {

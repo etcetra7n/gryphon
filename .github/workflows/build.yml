@@ -91,7 +91,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install dependencies
-        run: choco install ninja upx
+        run: choco install upx
       - name: Build
         run: |
           cmake -S. -B _build -G "Visual Studio 16 2019"
