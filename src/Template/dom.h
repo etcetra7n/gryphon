@@ -23,11 +23,11 @@ namespace Template
         std::map<std::string, std::string>    attributes() const;
         std::vector<Element*>                 children() const;
         Element*                              parent() const;
-        void                                  set_name(const std::string&);
-        void                                  set_value(const std::string&);
-        void                                  add_attr(const std::string&, const std::string&);
-        void                                  set_parent(Element*);
-        void                                  append_child(Element*);
+        void                                  setName(const std::string&);
+        void                                  setValue(const std::string&);
+        void                                  setAttribute(const std::string&, const std::string&);
+        void                                  setParent(Element*);
+        void                                  appendChild(Element*);
     };
 
     class Dom
@@ -35,9 +35,9 @@ namespace Template
       private:
         std::vector<Element*>                 _elements;
       public:
-        void                                  reserve_space(uint64_t);
+        void                                  reserveSpace(uint64_t);
         Element*                              getElementByIndex(uint64_t);
-        Element*                              new_element();
+        Element*                              createElement();
         std::vector<Element*>                 elements() const;
     };
 }

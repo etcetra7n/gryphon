@@ -18,7 +18,7 @@ include_directories(
 set(HEADERS
     src/gryphon.h
     src/Parser/endian.h
-    src/Parser/trim_ends.h
+    src/Parser/trimEnds.h
     src/Parser/parser.h
     src/Template/gtml.h
     src/Template/dom.h
@@ -27,15 +27,15 @@ set(HEADERS
 set(SOURCES
     src/Main/main.cpp
     src/Graph/raster.cpp
-    src/Export/export_bmp.cpp
+    src/Export/exportBmp.cpp
     src/Parser/endian.cpp
-    src/Parser/trim_ends.cpp
+    src/Parser/trimEnds.cpp
     src/Parser/parser.cpp
     src/Template/element.cpp
     src/Template/dom.cpp
-    src/Layout/parse_ggl.cpp
-    src/Template/compose_gtml.cpp
-    src/Template/parse_gtml.cpp
+    src/Layout/parseGgl.cpp
+    src/Template/composeGtml.cpp
+    src/Template/parseGtml.cpp
 )
 
 add_executable(gryphon ${HEADERS} ${SOURCES})

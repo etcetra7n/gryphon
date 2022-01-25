@@ -27,7 +27,7 @@ namespace Parser
         return res;
     }
 
-    int32_t Parser::parse_int32()
+    int32_t Parser::parseInt32()
     {
         /*parser 4 bytes converts them to int32_t and returns the result*/
         _cursor += 4;
@@ -37,7 +37,7 @@ namespace Parser
         return n;
     }
 
-    int64_t Parser::parse_int64()
+    int64_t Parser::parseInt64()
     {
         /*parser 8 bytes converts them to int64_t and returns the result*/
         _cursor += 8;
@@ -47,13 +47,13 @@ namespace Parser
         return n;
     }
 
-    char Parser::next_char()
+    char Parser::nextChar()
     {
         /*returns the charecter right after the cursor without moving the cursor*/
         return _rstr[_cursor+1];
     }
 
-    char Parser::next_glyph()
+    char Parser::nextGlyph()
     {
         /*returns the charecter that follows either immediately or after some
         whitespacecharecters after the cursor, without moving the cursor.
@@ -74,7 +74,7 @@ namespace Parser
         }
     }
 
-    bool Parser::begins_with(const std::string &sequence)
+    bool Parser::follows(const std::string &sequence)
     {
         /*returns true if sequence is the substring that follows either
         immediately or after some whitespace charecters after the cursor,
@@ -91,7 +91,7 @@ namespace Parser
             return false;
     }
 
-    std::string Parser::parse_word()
+    std::string Parser::parseWord()
     {
         /*returns a string containing a sequence of non-space charecters
         that comes after the cursor, and places the cursor right after
@@ -112,7 +112,7 @@ namespace Parser
         return _rstr.substr(begin, end-begin);
     }
 
-    std::string Parser::parse_till(const std::string &sequence)
+    std::string Parser::parseTill(const std::string &sequence)
     {
         /*returns the string beteen the cursor and the sequence,
         not including the sequence itself, and places the cursor right
@@ -131,7 +131,7 @@ namespace Parser
         }
     }
 
-    void Parser::ignore_till(const std::string &sequence)
+    void Parser::ignoreTill(const std::string &sequence)
     {
         /*Places the pointer right after the first occurence of 'sequence'*/
         std::string::size_type occ = _rstr.find(sequence, _cursor);

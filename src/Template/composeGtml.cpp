@@ -10,7 +10,7 @@
 
 namespace Template
 {
-    int compose_gtml(Dom *document, const std::string &filepath)
+    int composeGtml(Dom *document, const std::string &filepath)
     {
         std::ofstream file(filepath, std::ios::out | std::ios::binary);
         if(!file.good())
@@ -20,10 +20,10 @@ namespace Template
         }
 
         std::vector<Element*> elements = document->elements();
-        uint32_t major_version = Parser::hton_32(GRYPHON_GTML_MAJOR_VERSION);
-        uint32_t minor_version = Parser::hton_32(GRYPHON_GTML_MINOR_VERSION);
-        uint32_t patch_version = Parser::hton_32(GRYPHON_GTML_PATCH_VERSION);
-        uint64_t size = Parser::hton_64(elements.size());
+        uint32_t major_version = Parser::hton32(GRYPHON_GTML_MAJOR_VERSION);
+        uint32_t minor_version = Parser::hton32(GRYPHON_GTML_MINOR_VERSION);
+        uint32_t patch_version = Parser::hton32(GRYPHON_GTML_PATCH_VERSION);
+        uint64_t size = Parser::hton64(elements.size());
         file.write("gtml", 4);
         file.write(reinterpret_cast<char*>(&major_version), sizeof(major_version));
         file.write(reinterpret_cast<char*>(&minor_version), sizeof(minor_version));
@@ -52,7 +52,7 @@ namespace Template
                         break;
                     }
                 }
-                uint64_t parent_index = Parser::hton_64(j+1);
+                uint64_t parent_index = Parser::hton64(j+1);
                 file.write(reinterpret_cast<char*>(&parent_index), sizeof(parent_index));
             }
             else

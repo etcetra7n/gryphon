@@ -3,13 +3,13 @@
 #include <fstream>
 #include <sstream>
 #include "Parser/parser.h"
-#include "Parser/trim_ends.h"
+#include "Parser/trimEnds.h"
 #include "Template/dom.h"
 #include "gryphon.h"
 
 namespace Layout
 {
-    int parse_ggl(Template::Dom *document, const std::string &filepath)
+    int parseGgl(Template::Dom *document, const std::string &filepath)
     {
         std::ifstream file(filepath, std::ios::in);
         std::stringstream buffer;
@@ -63,24 +63,24 @@ namespace Layout
         {
             //The cursor is placed at a convinient position for the first 
             //iteration
-            parser.ignore_till("<");
+            parser.ignoreTill("<");
         }
             
         while(parser.active())
         {
-            Parser::Parser tag(parser.parse_till(">"));
-            if (!(tag.begins_with("!")))
+            Parser::Parser tag(parser.parseTill(">"));
+            if (!(tag.follows("!")))
             {
-                if (tag.begins_with("/"))
+                if (tag.follows("/"))
                 {
                     //For every closing tag, the last element of the 
                     //open_tags vector is removed
-                    tag.ignore_till("/");
-                    std::string e_name = tag.parse_word();
+                    tag.ignoreTill("/");
+                    std::string e_name = tag.parseWord();
                     if(open_tags[open_tags.size()-1]->name() == e_name)
                     {
                         open_tags.pop_back();
-                        parser.ignore_till("<");
+                        parser.ignoreTill("<");
                     }
                     else {
                         //Only the most recently opened tag can be closed
@@ -92,27 +92,27 @@ namespace Layout
                     //non closing tags are either opening tags or attribute
                     //tags. for both of the tags, the name and attributes
                     //are parsed
-                    Template::Element *e = document->new_element();
-                    e->set_name(tag.parse_word());
-                    while(isalpha(tag.next_glyph()))
+                    Template::Element *e = document->createElement();
+                    e->setName(tag.parseWord());
+                    while(isalpha(tag.nextGlyph()))
                     {
-                        std::string attr_n = tag.parse_word();
-                        tag.ignore_till("=");
-                        tag.ignore_till("\"");
-                        std::string attr_v = tag.parse_till("\"");
-                        e->add_attr(attr_n, attr_v);
+                        std::string attr_n = tag.parseWord();
+                        tag.ignoreTill("=");
+                        tag.ignoreTill("\"");
+                        std::string attr_v = tag.parseTill("\"");
+                        e->setAttribute(attr_n, attr_v);
                     }
                     if (open_tags.size() > 0)
                     {
                         //Both opening and attribute tags are appended to their
                         //parent
-                        open_tags[open_tags.size()-1]->append_child(e);
+                        open_tags[open_tags.size()-1]->appendChild(e);
                     }
-                    if (tag.next_glyph() == '/')
+                    if (tag.nextGlyph() == '/')
                     {
                         //For attribute tags, there is nothing to parse now.
                         //The cursor is placed a convinient position
-                        parser.ignore_till("<");
+                        parser.ignoreTill("<");
                     }
                     else
                     {
@@ -120,13 +120,13 @@ namespace Layout
                         //appended to the open_tags vector and the value 
                         //of the element get parsed
                         open_tags.push_back(e);
-                        e->set_value(Parser::trim_ends(parser.parse_till("<")));
+                        e->setValue(Parser::trimEnds(parser.parseTill("<")));
                     }
                 }
             } else{
                 //For every comment tags, cursor is placed at a position after
                 //the comment, thereby ignoring it
-                parser.ignore_till("<");
+                parser.ignoreTill("<");
             }
         }
         return 0;

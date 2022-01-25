@@ -18,11 +18,11 @@
 namespace Parser
 {
     uint8_t endian();
-    inline uint32_t hton_32(uint32_t x)
+    inline uint32_t hton32(uint32_t x)
     {
         return ((endian() == BIG_ENDIAN_ORDER)? x : BSWAP32(x));
     }
-    inline uint64_t hton_64(uint64_t x)
+    inline uint64_t hton64(uint64_t x)
     {
         return ((endian() == BIG_ENDIAN_ORDER)? x : BSWAP64(x));
     }

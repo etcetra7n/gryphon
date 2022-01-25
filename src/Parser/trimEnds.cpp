@@ -1,9 +1,9 @@
 #include <string>
-#include "trim_ends.h"
+#include "trimEnds.h"
 
 namespace Parser
 {
-    std::string trim_ends(const std::string &str)
+    std::string trimEnds(const std::string &str)
     {
         std::string::size_type begin;
         std::string::size_type end;

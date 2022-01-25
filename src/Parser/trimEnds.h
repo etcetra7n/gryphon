@@ -5,7 +5,7 @@
 
 namespace Parser
 {
-    std::string trim_ends(const std::string&);
+    std::string trimEnds(const std::string&);
 }
 
 #endif

@@ -27,8 +27,8 @@
 int main(int argc, char **argv)
 {
     Template::Dom document;
-    Layout::parse_ggl(&document, "workspace/test.ggl");
-    compose_gtml(&document, "workspace/test.gtml");
-    //Template::parse_gtml(&document, "workspace/test.gtml");
+    Layout::parseGgl(&document, "workspace/test.ggl");
+    composeGtml(&document, "workspace/test.gtml");
+    //Template::parseGtml(&document, "workspace/test.gtml");
     return 0;
 }

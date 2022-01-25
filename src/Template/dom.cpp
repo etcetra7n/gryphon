@@ -4,7 +4,7 @@
 
 namespace Template
 {
-    Element *Dom::new_element()
+    Element *Dom::createElement()
     {
         Element *new_elem = new Element();
         _elements.push_back(new_elem);
@@ -16,7 +16,7 @@ namespace Template
         return _elements[index];
     }
 
-    void Dom::reserve_space(uint64_t size)
+    void Dom::reserveSpace(uint64_t size)
     {
         _elements.reserve(size);
     }

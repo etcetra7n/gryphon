@@ -3,7 +3,7 @@
 
 namespace Export
 {
-    int export_bmp(struct pixel graph[V][H])
+    int exportBmp(struct pixel graph[V][H])
     {
         typedef struct                       /**** BMP file header structure ****/
         {

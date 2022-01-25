@@ -9,20 +9,20 @@ namespace Parser
     class Parser
     {
       private:
-        std::string _rstr;
-        std::string::size_type _cursor;
+        std::string               _rstr;
+        std::string::size_type    _cursor;
       public:
-        Parser(const std::string&);
-        bool active();
-        int32_t parse_int32();
-        int64_t parse_int64();
-        char next_char();
-        char next_glyph();
-        bool begins_with(const std::string&);
-        std::string parse_word();
-        std::string parse_till(const std::string&);
-        void ignore_till(const std::string&);
-        void jump(std::string::size_type n);
+                                  Parser(const std::string&);
+        bool                      active();
+        int32_t                   parseInt32();
+        int64_t                   parseInt64();
+        char                      nextChar();
+        char                      nextGlyph();
+        bool                      follows(const std::string&);
+        std::string               parseWord();
+        std::string               parseTill(const std::string&);
+        void                      ignoreTill(const std::string&);
+        void                      jump(std::string::size_type n);
     };
 }
 
