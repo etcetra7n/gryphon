@@ -31,20 +31,20 @@ namespace Parser
     int32_t Parser::parseInt32()
     {
         /*parser 4 bytes converts them to int32_t and returns the result*/
-        _cursor += 4;
         int32_t n;
         const char *str = _rstr.substr(_cursor, 4).c_str();
         memcpy(&n, str, 4);
+        _cursor += 4;
         return n;
     }
 
     int64_t Parser::parseInt64()
     {
         /*parser 8 bytes converts them to int64_t and returns the result*/
-        _cursor += 8;
         int64_t n;
         const char *str = _rstr.substr(_cursor, 8).c_str();
         memcpy(&n, str, 8);
+        _cursor += 8;
         return n;
     }
 
