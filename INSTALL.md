@@ -1,5 +1,5 @@
 ```shell
-$ cmake . -G Ninja
+$ cmake . -DCMAKE_BUILD_TYPE=Release -G Ninja
 $ ninja
 ```
 
