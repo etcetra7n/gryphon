@@ -35,7 +35,7 @@ namespace Template
       private:
         std::vector<Element*>                 _elements;
       public:
-        void                                  reserveSpace(uint64_t);
+        void                                  reserveSpace(std::vector<Element*>::size_type);
         Element*                              getElementByIndex(uint64_t);
         Element*                              createElement();
         std::vector<Element*>                 elements() const;

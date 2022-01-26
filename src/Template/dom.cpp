@@ -16,7 +16,7 @@ namespace Template
         return _elements[index];
     }
 
-    void Dom::reserveSpace(uint64_t size)
+    void Dom::reserveSpace(std::vector<Element*>::size_type size)
     {
         _elements.reserve(size);
     }

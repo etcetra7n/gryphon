@@ -26,6 +26,14 @@ namespace Parser
     {
         return ((endian() == BIG_ENDIAN_ORDER)? x : BSWAP64(x));
     }
+    inline uint32_t ntoh32(uint32_t x)
+    {
+        return ((endian() == BIG_ENDIAN_ORDER)? x : BSWAP32(x));
+    }
+    inline uint64_t ntoh64(uint64_t x)
+    {
+        return ((endian() == BIG_ENDIAN_ORDER)? x : BSWAP64(x));
+    }
 }
 
 #endif
