@@ -1,5 +1,5 @@
-#include <string>
 #include "trimEnds.h"
+#include <string>
 
 namespace Parser
 {

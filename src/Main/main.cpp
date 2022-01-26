@@ -20,7 +20,6 @@
  *****************************************************************************/
 
 #include <iostream>
-#include <vector>
 #include "Template/dom.h"
 #include "gryphon.h"
 

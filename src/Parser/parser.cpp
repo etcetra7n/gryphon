@@ -1,8 +1,9 @@
+#include "parser.h"
+
+#include <stdint.h>
 #include <cstdlib>
 #include <cstring>
-#include <stdint.h>
 #include <string>
-#include "parser.h"
 
 namespace Parser
 {
@@ -149,4 +150,3 @@ namespace Parser
             _cursor = _rstr.size()-1;
     }
 }
-

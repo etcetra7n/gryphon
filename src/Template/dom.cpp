@@ -1,6 +1,7 @@
+#include "Template/dom.h"
+
 #include <stdint.h>
 #include <vector>
-#include "Template/dom.h"
 
 namespace Template
 {

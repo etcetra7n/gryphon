@@ -1,6 +1,7 @@
-#include "Data/data.h"
-#include "Template/template.h"
 #include "gryphon.h"
+
+#include "Template/template.h"
+#include "Data/data.h"
 
 namespace Plot
 {

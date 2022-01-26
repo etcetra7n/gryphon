@@ -1,8 +1,9 @@
+#include "Template/dom.h"
+
 #include <cstdlib>
 #include <vector>
 #include <string>
 #include <map>
-#include "Template/dom.h"
 
 namespace Template
 {

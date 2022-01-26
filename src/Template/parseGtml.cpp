@@ -1,12 +1,15 @@
+#include "gryphon.h"
+
 #include <stdint.h>
+
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <iostream>
-#include "Parser/endian.h"
-#include "Parser/parser.h"
+
 #include "Template/dom.h"
-#include "gryphon.h"
+#include "Parser/parser.h"
+#include "Parser/endian.h"
 
 namespace Template
 {

@@ -1,11 +1,13 @@
+#include "gryphon.h"
+
 #include <cstdlib>
 #include <string>
 #include <fstream>
 #include <sstream>
+
 #include "Parser/parser.h"
 #include "Parser/trimEnds.h"
 #include "Template/dom.h"
-#include "gryphon.h"
 
 namespace Layout
 {

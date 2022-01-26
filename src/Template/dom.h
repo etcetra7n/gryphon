@@ -2,6 +2,7 @@
 #define GRYPHON_TEMPLATE_DOM_H
 
 #include <stdint.h>
+
 #include <vector>
 #include <string>
 #include <map>

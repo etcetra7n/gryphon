@@ -1,5 +1,5 @@
-#include <stdint.h>
 #include "endian.h"
+#include <stdint.h>
 
 namespace Parser
 {
