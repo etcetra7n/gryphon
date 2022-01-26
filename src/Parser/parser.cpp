@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <string>
+#include <iostream>
 
 namespace Parser
 {
@@ -123,7 +124,7 @@ namespace Parser
         std::string::size_type end = _rstr.find(sequence, _cursor);
         if (end != std::string::npos)
         {
-            _cursor = end+1;
+            _cursor = end + sequence.size();
             return _rstr.substr(begin, end-begin);
         }
         else
@@ -137,7 +138,7 @@ namespace Parser
         /*Places the pointer right after the first occurence of 'sequence'*/
         std::string::size_type occ = _rstr.find(sequence, _cursor);
         if (occ != std::string::npos)
-            _cursor = occ+1;
+            _cursor = occ + sequence.size();
     }
 
     void Parser::jump(std::string::size_type n)
