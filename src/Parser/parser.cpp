@@ -4,7 +4,6 @@
 #include <cstdlib>
 #include <cstring>
 #include <string>
-#include <iostream>
 
 namespace Parser
 {
@@ -52,7 +51,7 @@ namespace Parser
     char Parser::nextChar()
     {
         /*returns the charecter right after the cursor without moving the cursor*/
-        return _rstr[_cursor+1];
+        return _rstr[_cursor];
     }
 
     char Parser::nextGlyph()
