@@ -11,6 +11,8 @@
 #include "Parser/parser.h"
 #include "Parser/endian.h"
 
+#define NULL_STR std::string("\0", 1)
+
 namespace Template
 {
     int parseGtml(Dom *document, const std::string &filepath)
@@ -40,12 +42,12 @@ namespace Template
             for (uint64_t i = 0; i < size; i++)
             {
                 Element *e = document->createElement();
-                e->setName(parser.parseTill("\0"));
-                e->setValue(parser.parseTill("\0"));
-                while(parser.nextChar() != '\0')
+                e->setName(parser.parseTill(NULL_STR));
+                e->setValue(parser.parseTill(NULL_STR));
+                while(parser.nextChar() != 0x00)
                 {
-                    std::string name = parser.parseTill("\0");
-                    std::string value = parser.parseTill("\0");
+                    std::string name = parser.parseTill(NULL_STR);
+                    std::string value = parser.parseTill(NULL_STR);
                     e->setAttribute(name, value);
                 }
                 parser.jump(1);
