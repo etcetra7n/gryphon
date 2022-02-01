@@ -36,6 +36,7 @@ set(SOURCES
     src/Layout/parseGgl.cpp
     src/Template/composeGtml.cpp
     src/Template/parseGtml.cpp
+    src/Data/roll.cpp
 )
 
 add_executable(gryphon ${HEADERS} ${SOURCES})
