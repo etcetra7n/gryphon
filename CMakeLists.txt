@@ -6,13 +6,12 @@ project(Gryphon
 
 set(CMAKE_CXX_STANDARD 14)
 if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++14 /W4")
+    add_compile_options(/W4)
 else()
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wextra -Wpedantic")
+    add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
 include_directories(
-    include
     src
 )
 set(HEADERS
