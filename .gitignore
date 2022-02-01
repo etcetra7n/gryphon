@@ -494,5 +494,6 @@ FodyWeavers.xsd
 docs/_build/
 
 ### Others ###
-**/workspace/
 **/.trash/
+workspace/
+_test/
