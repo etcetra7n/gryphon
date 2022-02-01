@@ -3,26 +3,8 @@ name: Build
 on:
   push:
     branches: [ main ]
-    paths-ignore:
-      - '.github/**'
-      - 'docs/**'
-      - 'examples/**'
-      - '.gitignore'
-      - '.lgtm.yml'
-      - 'INSTALL.md'
-      - 'LICENSE'
-      - 'README.md'
   pull_request:
     branches: [ main ]
-    paths-ignore:
-      - '.github/**'
-      - 'docs/**'
-      - 'examples/**'
-      - '.gitignore'
-      - '.lgtm.yml'
-      - 'INSTALL.md'
-      - 'LICENSE'
-      - 'README.md'
   release:
     types: [released]
   workflow_dispatch:
