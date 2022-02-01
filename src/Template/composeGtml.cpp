@@ -1,4 +1,4 @@
-#include "gryphon.h"
+#include "Template/template.h"
 
 #include <vector>
 #include <string>
@@ -7,7 +7,6 @@
 #include <fstream>
 
 #include "Template/gtml.h"
-#include "Template/dom.h"
 #include "Parser/endian.h"
 
 namespace Template

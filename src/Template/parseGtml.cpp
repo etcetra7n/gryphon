@@ -1,4 +1,4 @@
-#include "gryphon.h"
+#include "Template/template.h"
 
 #include <stdint.h>
 
@@ -7,7 +7,6 @@
 #include <sstream>
 #include <iostream>
 
-#include "Template/dom.h"
 #include "Parser/parser.h"
 #include "Parser/endian.h"
 

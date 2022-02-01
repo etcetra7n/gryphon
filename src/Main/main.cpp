@@ -20,8 +20,8 @@
  *****************************************************************************/
 
 #include <iostream>
-#include "Template/dom.h"
-#include "gryphon.h"
+#include "Layout/layout.h"
+#include "Template/template.h"
 
 int main(int argc, char **argv)
 {

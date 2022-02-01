@@ -16,11 +16,12 @@ include_directories(
     src
 )
 set(HEADERS
-    src/gryphon.h
-    src/Parser/endian.h
     src/Parser/parser.h
-    src/Template/gtml.h
+    src/Parser/endian.h
+    src/Template/template.h
     src/Template/dom.h
+    src/Template/gtml.h
+    src/Data/data.h
     src/Data/roll.h
 )
 set(SOURCES

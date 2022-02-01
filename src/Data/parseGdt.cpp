@@ -1,8 +1,6 @@
-#include "gryphon.h"
+#include "Data/data.h"
 
 #include <string>
-#include "Data/roll.h"
-
 
 namespace Data
 {
