@@ -121,7 +121,7 @@ namespace Layout
                         //appended to the open_tags vector and the value 
                         //of the element get parsed
                         open_tags.push_back(e);
-                        e->setValue(Parser::trimEnds(parser.parseTill("<")));
+                        e->setValue(Parser::trim(parser.parseTill("<")));
                     }
                 }
             } else{

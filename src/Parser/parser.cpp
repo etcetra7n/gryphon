@@ -150,7 +150,7 @@ namespace Parser
             _cursor = _rstr.size()-1;
     }
     
-    std::string trimEnds(const std::string &str)
+    std::string trim(const std::string &str)
     {
         std::string::size_type begin;
         std::string::size_type end;
