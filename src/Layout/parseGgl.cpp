@@ -6,7 +6,6 @@
 #include <sstream>
 
 #include "Parser/parser.h"
-#include "Parser/trimEnds.h"
 #include "Template/dom.h"
 
 namespace Layout

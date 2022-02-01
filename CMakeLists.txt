@@ -18,7 +18,6 @@ include_directories(
 set(HEADERS
     src/gryphon.h
     src/Parser/endian.h
-    src/Parser/trimEnds.h
     src/Parser/parser.h
     src/Template/gtml.h
     src/Template/dom.h
@@ -29,7 +28,6 @@ set(SOURCES
     src/Graph/raster.cpp
     src/Export/exportBmp.cpp
     src/Parser/endian.cpp
-    src/Parser/trimEnds.cpp
     src/Parser/parser.cpp
     src/Template/element.cpp
     src/Template/dom.cpp

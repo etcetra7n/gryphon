@@ -26,6 +26,8 @@ namespace Parser
         void                    ignoreTill(const std::string&);
         void                    jump(std::string::size_type n);
     };
+    
+    std::string trimEnds(const std::string&);
 }
 
 #endif
