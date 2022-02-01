@@ -495,5 +495,5 @@ docs/_build/
 
 ### Others ###
 **/.trash/
-workspace/
+_workspace/
 _test/
