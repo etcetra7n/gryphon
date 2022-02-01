@@ -30,9 +30,9 @@ namespace Template
         if(parser.active())
         {
             parser.ignoreTill("gtml");
-            uint32_t file_major_version = Parser::ntoh32(parser.parseInt32());
-            uint32_t file_minor_version = Parser::ntoh32(parser.parseInt32());
-            uint32_t file_patch_version = Parser::ntoh32(parser.parseInt32());
+            parser.parseInt32();
+            parser.parseInt32();
+            parser.parseInt32();
             uint64_t size = Parser::ntoh64(parser.parseInt64());
             
             document->reserveSpace(size);
@@ -57,7 +57,6 @@ namespace Template
         {
             return 1;
         }
-        
         return 0;
     }
 }
