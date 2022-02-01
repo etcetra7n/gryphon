@@ -26,8 +26,6 @@ set(HEADERS
 )
 set(SOURCES
     src/Main/main.cpp
-    src/Graph/raster.cpp
-    src/Export/exportBmp.cpp
     src/Parser/endian.cpp
     src/Parser/parser.cpp
     src/Template/element.cpp

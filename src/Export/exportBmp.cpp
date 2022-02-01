@@ -1,4 +1,4 @@
-#include "gryphon.h"
+#include "export.h"
 #include <iostream>
 
 namespace Export

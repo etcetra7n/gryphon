@@ -1,5 +1,3 @@
-#include "gryphon.h"
-
 namespace Graph
 {
     int raster(struct pixel graph[V][H])
