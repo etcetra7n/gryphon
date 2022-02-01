@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include <string>
 
+#define NULL_BYTE std::string("\0", 1)
+
 namespace Parser
 {
     class Parser
