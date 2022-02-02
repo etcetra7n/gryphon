@@ -26,7 +26,6 @@ set(MSVC_WARNINGS
     /w14826 # Conversion from 'type1' to 'type2' is sign-extented. This may cause
             # unexpected runtime behavior
 )
-
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     add_compile_options(${GCC_WARNINGS})
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL ".*Clang") # eg Clang or AppleClang
