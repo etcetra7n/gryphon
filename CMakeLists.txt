@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.1.0)
-project(Gryphon 
+project(Gryphon
     VERSION 0.1.0
     LANGUAGES CXX
 )
 
 set(CMAKE_CXX_STANDARD 14)
+
 if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
     add_compile_options(/W4)
 else()

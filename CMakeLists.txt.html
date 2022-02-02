@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=UTF-8">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #C7C7C7;
+}
+.sc0 {
+}
+.sc2 {
+	color: #F57F3D;
+}
+.sc5 {
+	font-weight: bold;
+	color: #E6C74E;
+}
+.sc7 {
+	color: #FF5757;
+}
+.sc8 {
+	font-weight: bold;
+}
+.sc11 {
+	font-weight: bold;
+}
+.sc14 {
+	font-weight: bold;
+	color: #E6C74E;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #2E2E2E; "><span class="sc5">cmake_minimum_required</span><span class="sc0">(</span><span class="sc8">VERSION</span><span class="sc0"> 3.1.0)
+</span><span class="sc5">project</span><span class="sc0">(Gryphon 
+    </span><span class="sc8">VERSION</span><span class="sc0"> 0.1.0
+    LANGUAGES CXX
+)
+
+</span><span class="sc5">set</span><span class="sc0">(CMAKE_CXX_STANDARD </span><span class="sc14">14</span><span class="sc0">)
+</span><span class="sc11">if</span><span class="sc0">(CMAKE_CXX_COMPILER_ID </span><span class="sc8">STREQUAL</span><span class="sc0"> </span><span class="sc2">"MSVC"</span><span class="sc0">)
+    </span><span class="sc5">add_compile_options</span><span class="sc0">(/W4)
+</span><span class="sc11">else</span><span class="sc0">()
+    </span><span class="sc5">add_compile_options</span><span class="sc0">(-Wall -Wextra -Wpedantic)
+</span><span class="sc11">endif</span><span class="sc0">()
+
+</span><span class="sc5">include_directories</span><span class="sc0">(
+    src
+)
+</span><span class="sc5">set</span><span class="sc0">(HEADERS
+    src/Parser/parser.h
+    src/Parser/endian.h
+    src/Template/template.h
+    src/Template/dom.h
+    src/Template/gtml.h
+    src/Data/data.h
+    src/Data/roll.h
+)
+</span><span class="sc5">set</span><span class="sc0">(</span><span class="sc8">SOURCES</span><span class="sc0">
+    src/Main/main.cpp
+    src/Parser/endian.cpp
+    src/Parser/parser.cpp
+    src/Template/element.cpp
+    src/Template/dom.cpp
+    src/Layout/parseGgl.cpp
+    src/Template/composeGtml.cpp
+    src/Template/parseGtml.cpp
+    src/Data/roll.cpp
+)
+
+</span><span class="sc5">add_executable</span><span class="sc0">(gryphon </span><span class="sc7">${HEADERS}</span><span class="sc0"> </span><span class="sc7">${SOURCES}</span><span class="sc0">)
+</span><span class="sc5">install</span><span class="sc0">(
+    TARGETS gryphon
+    RUNTIME DESTINATION bin
+)
+</span></div></body>
+</html>
