@@ -30,9 +30,9 @@ set(SOURCES
     src/Parser/parser.cpp
     src/Template/element.cpp
     src/Template/dom.cpp
-    src/Layout/parseGgl.cpp
-    src/Template/composeGtml.cpp
-    src/Template/parseGtml.cpp
+    src/Layout/parseGGL.cpp
+    src/Template/composeGTML.cpp
+    src/Template/parseGTML.cpp
     src/Data/roll.cpp
 )
 

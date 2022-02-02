@@ -6,7 +6,7 @@
 
 namespace Data
 {
-    int parseGdt(Roll *, const std::string &);
+    int parseGDT(Roll *, const std::string &);
 }
 
 #endif

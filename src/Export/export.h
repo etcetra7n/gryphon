@@ -1,4 +1,4 @@
 namespace Export
 {
-    int exportBmp(struct pixel graph[V][H]);
+    int exportBMP(struct pixel graph[V][H]);
 }

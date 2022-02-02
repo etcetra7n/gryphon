@@ -3,7 +3,7 @@
 
 namespace Export
 {
-    int exportBmp(struct pixel graph[V][H])
+    int exportBMP(struct pixel graph[V][H])
     {
         typedef struct                       /**** BMP file header structure ****/
         {
@@ -32,7 +32,7 @@ namespace Export
         bmpInfoHeader bih;
 
         /* Magic number for file. It does not fit in the header structure due to alignment requirements, so put it outside */
-        unsigned short bfType=0x4d42;           
+        unsigned short bfType=0x4d42;
         bfh.bfReserved1 = 0;
         bfh.bfReserved2 = 0;
         bfh.bfSize = 2+sizeof(bmpFileHeader) + sizeof(bmpInfoHeader)+640*480*3;

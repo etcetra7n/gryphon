@@ -12,7 +12,7 @@
 
 namespace Template
 {
-    int parseGtml(Dom *document, const std::string &filepath)
+    int parseGTML(Dom *document, const std::string &filepath)
     {
         std::ifstream file(filepath, std::ios::in);
         std::stringstream buffer;
@@ -33,9 +33,9 @@ namespace Template
             parser.parseInt32();
             parser.parseInt32();
             uint64_t size = Parser::ntoh64(parser.parseInt64());
-            
+
             document->reserveSpace(size);
-            
+
             for (uint64_t i = 0; i < size; i++)
             {
                 Element *e = document->createElement();

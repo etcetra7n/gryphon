@@ -6,7 +6,7 @@
 
 namespace Plot
 {
-    int composeGplt(Template::Dom *, Data::Roll *);
+    int composeGPLT(Template::Dom *, Data::Roll *);
 }
 
 #endif

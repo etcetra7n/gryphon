@@ -5,7 +5,7 @@
 
 namespace Plot
 {
-    int composeGplt(Template::Dom *document, Data::Roll *roll)
+    int composeGPLT(Template::Dom *document, Data::Roll *roll)
     {
         return 0;
     }
