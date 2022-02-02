@@ -11,8 +11,8 @@ set(GCC_WARNINGS
 set(CLANG_WARNINGS
     -Wall              # standard and reasonable baseline warnings
     -Wextra            # standard and reasonable baseline warnings
-    -Wpedantic         # warn on everything not adhering to strict ISO C++ standards
-    -Wcast-align       # warn for potential performance problem casts
+    -Wpedantic         # warn on anything not adhering to strict ISO C++ standards
+    -Wcast-align       # warn on cast of pointers to types of larger alignment (eg. char* to int*)
     -Wunused           # warn on anything being unused
     -Wconversion       # warn on type conversion that may result in loss of data
     -Wnull-dereference # warn if a null dereference is detected
