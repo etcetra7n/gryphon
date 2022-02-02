@@ -5,7 +5,6 @@ project(Gryphon
     LANGUAGES CXX
 )
 set(CMAKE_CXX_STANDARD 14)
-
 include(cmake/CxxWarnings.cmake)
 
 #Set output directories of all build types to one place
