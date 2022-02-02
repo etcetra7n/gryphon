@@ -1,4 +1,4 @@
-# add src to include path
+# add src to include directory
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 set(HEADERS
@@ -22,7 +22,6 @@ set(SOURCES
     Data/roll.cpp
 )
 add_executable(gryphon ${HEADERS} ${SOURCES})
-
 install(
     TARGETS gryphon
     RUNTIME DESTINATION bin
