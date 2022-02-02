@@ -1,7 +1,3 @@
-path_classifiers:
-  template: 
-    - docs/conf.py
-
 extraction:
   cpp:
     configure:
