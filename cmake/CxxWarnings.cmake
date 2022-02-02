@@ -14,9 +14,9 @@ set(CLANG_WARNINGS
     -Wpedantic         # warn on everything not adhering to strict ISO C++ standards
     -Wcast-align       # warn for potential performance problem casts
     -Wunused           # warn on anything being unused
-    -Wconversion       # warn on type conversion that may lose data
+    -Wconversion       # warn on type conversion that may result in loss of data
     -Wnull-dereference # warn if a null dereference is detected
-    -Wformat=2         # warn on security issues of functions that format output(like printf)
+    -Wformat=2         # warn on security issues of functions that format output (like printf)
     -Wshorten-64-to-32 # warn on illegal conversion from 64 bit data types to 32 bit data types
 )
 set(MSVC_WARNINGS
