@@ -6,8 +6,8 @@ project(Gryphon
 )
 set(CMAKE_CXX_STANDARD 14)
 
-include(cmake/CXXWarnings.cmake)
-
+include(cmake/cxxWarnings.cmake)
+q
 #Set output directories of all build types to one place
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY                "${CMAKE_BINARY_DIR}")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG          "${CMAKE_BINARY_DIR}")
