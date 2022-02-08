@@ -7,7 +7,7 @@
 namespace Template
 {
     int parseGTML(Dom *, const std::string &);
-    int composeGTML(Dom *, const std::string &);
+    int composeGTML(const std::string &, Dom *);
 }
 
 #endif

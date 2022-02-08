@@ -11,7 +11,7 @@
 
 namespace Template
 {
-    int composeGTML(Dom *document, const std::string &filepath)
+    int composeGTML(const std::string &filepath, Dom *document)
     {
         std::ofstream file(filepath, std::ios::out | std::ios::binary);
         if(!file.good())
