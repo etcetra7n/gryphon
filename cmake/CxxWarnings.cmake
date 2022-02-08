@@ -20,11 +20,11 @@ set(CLANG_WARNINGS
     -Wshorten-64-to-32 # warn on illegal conversion from 64 bit data types to 32 bit data types
 )
 set(MSVC_WARNINGS
-    /W4     # standard and reasonable baseline warnings
-    /w14242 # 'identifier': conversion from 'type1' to 'type2', possible loss of data
-    /w14311 # 'variable' pointer truncation from 'type1' to 'type2'
-    /w14826 # Conversion from 'type1' to 'type2' is sign-extented. This may cause
-            # unexpected runtime behavior
+    /W4                # standard and reasonable baseline warnings
+    /w14242            # 'identifier': conversion from 'type1' to 'type2', possible loss of data
+    /w14311            # 'variable' pointer truncation from 'type1' to 'type2'
+    /w14826            # Conversion from 'type1' to 'type2' is sign-extented. This may cause
+                       # unexpected runtime behavior
 )
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     add_compile_options(${GCC_WARNINGS})
