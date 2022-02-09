@@ -1,7 +1,4 @@
-# Markdown
-*.md            text  diff=markdown  eol=crlf
-
-# Source files
-*.c             text  diff=cpp  eol=crlf
-*.cpp           text  diff=cpp  eol=crlf
-*.h             text  diff=cpp  eol=crlf
+*.md    text  diff=markdown  eol=crlf
+*.c     text  diff=cpp       eol=crlf
+*.cpp   text  diff=cpp       eol=crlf
+*.h     text  diff=cpp       eol=crlf
