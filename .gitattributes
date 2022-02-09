@@ -1,5 +1,8 @@
-*               text=auto
-*.md            text      diff=markdown
-*.c             text      diff=cpp
-*.cpp           text      diff=cpp
-*.h             text      diff=cpp
+# Set default behavior to automatically normalize line endings
+* text=auto
+
+# Set default behavior for command prompt diff
+*.md   diff=markdown
+*.c    diff=cpp
+*.cpp  diff=cpp
+*.h    diff=cpp
