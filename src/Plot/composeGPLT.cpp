@@ -1,12 +1,12 @@
-#include "Data/roll.h"
-#include "Template/dom.h"
 #include "Template/plot.h"
+
+#include "Template/dom.h"
+#include "Data/roll.h"
 
 namespace Plot
 {
-int
-composeGPLT (Template::Dom *document, Data::Roll *roll)
-{
-  return 0;
+    int composeGPLT(Template::Dom *document, Data::Roll *roll)
+    {
+        return 0;
+    }
 }
-} // namespace Plot

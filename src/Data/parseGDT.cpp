@@ -1,44 +1,44 @@
+#include "Data/data.h"
+
 #include <stdint.h>
 
-#include <fstream>
-#include <iostream>
-#include <sstream>
 #include <string>
+#include <fstream>
+#include <sstream>
+#include <iostream>
 
-#include "Data/data.h"
-#include "Parser/endian.h"
 #include "Parser/parser.h"
+#include "Parser/endian.h"
 
 namespace Data
 {
-int
-parseGDT (Roll *roll, const std::string &filepath)
-{
-  std::ifstream file (filepath, std::ios::in);
-  std::stringstream buffer;
-  if (!file.good ())
+    int parseGDT(Roll *roll, const std::string &filepath)
     {
-      file.close ();
-      return 1;
-    }
-  buffer << file.rdbuf ();
-  file.close ();
+        std::ifstream file(filepath, std::ios::in);
+        std::stringstream buffer;
+        if(!file.good())
+        {
+            file.close();
+            return 1;
+        }
+        buffer << file.rdbuf();
+        file.close();
 
-  Parser::Parser parser (buffer.str ());
+        Parser::Parser parser(buffer.str());
 
-  if (parser.active ())
-    {
-      parser.ignoreTill ("gdt");
-      parser.parseInt32 ();
-      parser.parseInt32 ();
-      parser.parseInt32 ();
+        if(parser.active())
+        {
+            parser.ignoreTill("gdt");
+            parser.parseInt32();
+            parser.parseInt32();
+            parser.parseInt32();
 
-      // CONTINUE
+            //CONTINUE
+        }
+        else
+        {
+            return 1;
+        }
+        return 0;
     }
-  else
-    {
-      return 1;
-    }
-  return 0;
 }
-} // namespace Data

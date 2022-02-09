@@ -5,7 +5,7 @@
 
 namespace Layout
 {
-int parseGGL (Template::Dom *, const std::string &);
+    int parseGGL(Template::Dom *, const std::string &);
 }
 
 #endif
