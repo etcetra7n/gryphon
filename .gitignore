@@ -21,10 +21,6 @@
 *.dylib
 *.dll
 
-# Fortran module files
-*.mod
-*.smod
-
 # Compiled Static libraries
 *.lai
 *.la
@@ -426,9 +422,6 @@ ASALocalRun/
 # NVidia Nsight GPU debugger configuration file
 *.nvuser
 
-# MFractors (Xamarin productivity tool) working folder
-.mfractor/
-
 # Local History for Visual Studio
 .localhistory/
 
@@ -454,14 +447,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-### VisualStudio Patch ###
-# Additional files built by Visual Studio
-
 ### Sphinx ###
-# Sphinx build results
 docs/_build/
-
-### Others ###
-**/.trash/
-_workspace/
-_test/
