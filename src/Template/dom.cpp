@@ -13,17 +13,11 @@ namespace Template
     }
 
     Element *Dom::getElementByIndex(uint64_t index)
-    {
-        return _elements[index];
-    }
+        { return _elements[index]; }
 
     void Dom::reserveSpace(std::vector<Element*>::size_type size)
-    {
-        _elements.reserve(size);
-    }
+        { _elements.reserve(size); }
 
     std::vector<Element*> Dom::elements() const
-    {
-        return _elements;
-    }
+        { return _elements; }
 }

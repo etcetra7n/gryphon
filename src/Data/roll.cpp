@@ -12,28 +12,18 @@ namespace Data
     {
         _axlist.reserve(dimension);
         for (uint64_t i=0; i<dimension; i++)
-        {
             _axlist[i]->reserve(size);
-        }
     }
-    
+
     uint64_t Roll::size() const
-    {
-        return _size;
-    }
-    
+        { return _size; }
+
     uint64_t Roll::dimension() const
-    {
-        return _dimension;
-    }
-    
+        { return _dimension; }
+
     std::vector<uint32_t> Roll::rtype() const
-    {
-        return _rtype;
-    }
-    
+        { return _rtype; }
+
     void Roll::setAxis(uint64_t index, std::vector<void*> &axis)
-    {
-        _axlist[index] = &axis;
-    }
+        { _axlist[index] = &axis; }
 }
