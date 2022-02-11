@@ -1,5 +1,5 @@
 ---
-name: Build issue
+name: Build Issue
 about: Report build errors or issues on installation
 title: ''
 labels: ''
