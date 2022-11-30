@@ -21,11 +21,13 @@ namespace Data
         std::vector<uint32_t>             _rtype;
         std::vector<std::vector<void*>*>  _axlist;
       public:
-                                          Roll(uint64_t, uint64_t, const std::vector<uint32_t>&);
-        uint64_t                          size() const;                        
+                                          Roll();
+        uint64_t                          size() const;
         uint64_t                          dimension() const;
         std::vector<uint32_t>             rtype() const;
         void                              setAxis(uint64_t, std::vector<void*>&);
+        void                              setSize(uint64_t);
+        void                              setDimension(uint64_t);
     };
 }
 
