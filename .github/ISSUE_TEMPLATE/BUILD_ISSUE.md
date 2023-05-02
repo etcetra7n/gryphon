@@ -1,6 +1,6 @@
 ---
 name: Build Issue
-about: Report build errors or issues on installation
+about: Report build errors or issues during installation
 title: ''
 labels: ''
 assignees: ''
@@ -16,9 +16,10 @@ Describe what is wrong [e.g. "Error 1123 on MSVC compiler..."]
 - CMake Generator: [e.g. Ninja]
 - Compiler: [e.g. MinGW GCC v9.2.0]
 
-### Build command
-Write the build command you used. Here is an example:
+### Build verbose
+Copy and paste the build output you got in cmd
+Here is an example:
 ```shell
 $ cmake . -G Ninja
-$ ninja
+cmake failed.
 ```

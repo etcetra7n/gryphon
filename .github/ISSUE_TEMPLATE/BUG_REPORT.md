@@ -23,3 +23,4 @@ Required only if the bug is an issue with either the generated graph or the GUI
 
 ### Other information
 - Gryphon version: [e.g. v0.1.0]
+- OS: [e.g. Windows 10 64 bit]
