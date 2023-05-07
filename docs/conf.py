@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Gryphon'
-copyright = '2021, John Anchery'
+copyright = '2023, John Anchery'
 author = 'John Anchery'
 
 
