@@ -14,6 +14,9 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+source_suffix = '.rst'
+master_doc = 'index'
+add_function_parentheses = True
 
 # -- Project information -----------------------------------------------------
 
